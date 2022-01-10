@@ -1,0 +1,133 @@
+root@NetworkAutomation-1:~/Ansible# cat ./playbooks/backupDevices.yml
+#AccessSwitches
+---
+- name: Gather Information About the Access Switches
+  hosts: AccessSWs
+  connection: local
+
+  tasks:
+    - name: Show running configuration
+      ios_command:
+        commands: show run
+      register: print_output_config
+
+    - name: Show version information
+      ios_command:
+        commands:
+          - show version
+      register: print_output_version
+
+    - name: Show interface status
+      ios_command:
+        commands:
+          - show interface status
+
+      register: print_output_status
+
+    - name: Save Running Config to File
+      copy: content="{{ print_output_config.stdout[0] }}" dest="./restore/{{ inventory_hostname }}/RunningConfig-{{ ansible_date_time.iso8601 }}.txt"
+
+    - name: Save Version Information to File
+      copy: content="{{ print_output_version.stdout[0] }}" dest="./restore/{{ inventory_hostname }}/Version-{{ ansible_date_time.iso8601 }}.txt"
+
+    - name: Save Interface Status to File
+      copy: content="{{ print_output_status.stdout[0] }}" dest="./restore/{{ inventory_hostname }}/InterfaceStatus-{{ ansible_date_time.iso8601 }}.txt"
+
+
+#Routers
+- name: Gather Information About the Core Routers
+  hosts: CoreRTRs
+  connection: local
+
+  tasks:
+    - name: Show running configuration
+      ios_command:
+        commands: show run
+      register: print_output_config
+
+    - name: Show version information
+      ios_command:
+        commands:
+          - show version
+      register: print_output_version
+
+    - name: Show interface IP assignment
+      ios_command:
+        commands:
+          - show ip int brief
+
+      register: print_output_ips
+
+    - name: Show Routing Table
+      ios_command:
+        commands:
+          - show ip route
+
+      register: print_output_route
+
+    - name: Save Running Config to File
+      copy: content="{{ print_output_config.stdout[0] }}" dest="./restore/{{ inventory_hostname }}/RunningConfig-{{ ansible_date_time.iso8601 }}.txt"
+
+    - name: Save Version Information to File
+      copy: content="{{ print_output_version.stdout[0] }}" dest="./restore/{{ inventory_hostname }}/Version-{{ ansible_date_time.iso8601 }}.txt"
+
+    - name: Save Interface IPs to File
+      copy: content="{{ print_output_ips.stdout[0] }}" dest="./restore/{{ inventory_hostname }}/InterfaceIP-{{ ansible_date_time.iso8601 }}.txt"
+
+    - name: Save Routing Table to File
+      copy: content="{{ print_output_route.stdout[0] }}" dest="./restore/{{ inventory_hostname }}/RoutingTable-{{ ansible_date_time.iso8601 }}.txt"
+
+
+#L3 Switches
+
+- name: Gather Information About the Core Routers
+  hosts: DistSWs
+  connection: local
+
+  tasks:
+    - name: Show running configuration
+      ios_command:
+        commands: show run
+      register: print_output_config
+
+    - name: Show version information
+      ios_command:
+        commands:
+          - show version
+      register: print_output_version
+
+    - name: Show interface status
+      ios_command:
+        commands:
+          - show interface status
+
+      register: print_output_status
+
+    - name: Show interface IP assignment
+      ios_command:
+        commands:
+          - show ip int brief
+
+      register: print_output_ips
+
+    - name: Show Routing Table
+      ios_command:
+        commands:
+          - show ip route
+
+      register: print_output_route
+
+    - name: Save Running Config to File
+      copy: content="{{ print_output_config.stdout[0] }}" dest="./restore/{{ inventory_hostname }}/RunningConfig-{{ ansible_date_time.iso8601 }}.txt"
+
+    - name: Save Version Information to File
+      copy: content="{{ print_output_version.stdout[0] }}" dest="./restore/{{ inventory_hostname }}/Version-{{ ansible_date_time.iso8601 }}.txt"
+
+    - name: Save Interface Status to File
+      copy: content="{{ print_output_status.stdout[0] }}" dest="./restore/{{ inventory_hostname }}/InterfaceIP-{{ ansible_date_time.iso8601 }}.txt"
+
+    - name: Save Interface IPs to File
+      copy: content="{{ print_output_ips.stdout[0] }}" dest="./restore/{{ inventory_hostname }}/InterfaceIP-{{ ansible_date_time.iso8601 }}.txt"
+
+    - name: Save Routing Table to File
+      copy: content="{{ print_output_route.stdout[0] }}" dest="./restore/{{ inventory_hostname }}/RoutingTable-{{ ansible_date_time.iso8601 }}.txt"
