@@ -1,0 +1,7 @@
+NTP_Servers:
+  - Server: 1.1.1.1
+    keyNumber: 1
+    MD5Key: TestKey123
+  - Server: 2.2.2.2
+    keyNumber: 2
+    MD5Key: TestKey1234
