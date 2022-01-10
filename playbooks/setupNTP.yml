@@ -1,0 +1,14 @@
+---
+- name: Configure NTP Servers
+  hosts: ALL
+  gather_facts: false
+  connection: local
+
+  tasks:
+    - name: Configuring NTP Servers
+      ios_config:
+        lines:
+          - "ntp authentication-key {{ item.keyNumber }} md5 {{ item.MD5Key }}"
+          - "ntp trusted-key {{ item.keyNumber }}"
+          - "ntp server {{ item.Server }} key {{ item.keyNumber }}"
+      loop: "{{ NTP_Servers }}"
