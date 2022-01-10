@@ -1,4 +1,3 @@
-root@NetworkAutomation-1:~/Ansible# cat ./playbooks/backupDevices.yml
 #AccessSwitches
 ---
 - name: Gather Information About the Access Switches
@@ -55,14 +54,12 @@ root@NetworkAutomation-1:~/Ansible# cat ./playbooks/backupDevices.yml
       ios_command:
         commands:
           - show ip int brief
-
       register: print_output_ips
 
     - name: Show Routing Table
       ios_command:
         commands:
           - show ip route
-
       register: print_output_route
 
     - name: Save Running Config to File
@@ -100,21 +97,18 @@ root@NetworkAutomation-1:~/Ansible# cat ./playbooks/backupDevices.yml
       ios_command:
         commands:
           - show interface status
-
       register: print_output_status
 
     - name: Show interface IP assignment
       ios_command:
         commands:
           - show ip int brief
-
       register: print_output_ips
 
     - name: Show Routing Table
       ios_command:
         commands:
           - show ip route
-
       register: print_output_route
 
     - name: Save Running Config to File
