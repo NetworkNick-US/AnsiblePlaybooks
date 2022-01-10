@@ -1,0 +1,10 @@
+some_interfaces:
+  - interface: GigabitEthernet 1/1
+    dataVLAN: 100
+    voiceVLAN: 101
+  - interface: GigabitEthernet 1/2
+    dataVLAN: 200
+    voiceVLAN: 101
+  - interface: GigabitEthernet 1/3
+    voiceVLAN: 101
+    dataVLAN: 300

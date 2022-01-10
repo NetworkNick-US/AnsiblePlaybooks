@@ -1,0 +1,14 @@
+---
+- name: ConfigureAccessPorts
+  hosts: Access7
+  gather_facts: false
+  connection: local
+
+  tasks:
+    - name: Configuring Access Ports
+      ios_config:
+        parents: "interface {{ item.interface }}"
+        lines:
+          - "switchport access vlan {{ item.dataVLAN }}"
+          - "switchport voice vlan {{ item.voiceVLAN }}"
+      loop: "{{ some_interfaces }}"
