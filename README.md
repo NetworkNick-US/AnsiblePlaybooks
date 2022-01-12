@@ -4,12 +4,12 @@ Basic Plays and Playbooks for My Future Reference
 
 
 ## Goals
-- [X] Test
-- [ ] 2
+- [X] Create Operational Playbooks
+- [ ] Incorporate Best-Practices
 
 ## Playbooks
 
-First Header  | Second Header
+Playbook  | Feature
 ------------- | -------------
 Content Cell  | Content Cell
 Content Cell  | Content Cell
