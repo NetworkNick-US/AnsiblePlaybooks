@@ -11,7 +11,7 @@ A collection of my plays and playbooks as I learn Ansible within my virtual lab 
 ## Playbooks
 
 Playbook              | Features
--------------         | -------------
+:-------------         | -------------
 backupConfigs.yml     | Create a log of all devices' running configurations, software versions, interface statuses, etc.
 changeEnable.yml      | Change the enable password on all network devices
 setupAccessPorts.yml  | Configures generic functionality for a Layer2 access port
