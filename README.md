@@ -3,10 +3,10 @@ A collection of my plays and playbooks as I learn Ansible within my virtual lab 
 
 ## Goals
 - [X] Create Operational Playbooks 👍
-- [ ] Implement Ansible-Vault for sensitive information 🦺
+- [ ] Implement Ansible-Vault for sensitive information:clipboard:
 - [ ] Create "one-touch" deployment playbook for IOS XE and NXOS network devices 👨‍💻
 - [ ] Publish basic .zip or .tar file to bring a collection of useful playbooks into isolated environments 🛂
-- [ ] Simplify compliance and change-management with audit playbooks 📋
+- [ ] Simplify compliance and change-management with audit playbooks🦺
 
 ## Playbooks
 
