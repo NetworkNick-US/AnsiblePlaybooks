@@ -4,7 +4,9 @@ A collection of my plays and playbooks as I learn Ansible within my virtual lab 
 ## Goals
 - [X] Create Operational Playbooks 👍
 - [ ] Implement Ansible-Vault for sensitive information 🦺
-- [ ] Create "one-touch" deployment playbook for IOS XE and NXOS network devices 🖇️
+- [ ] Create "one-touch" deployment playbook for IOS XE and NXOS network devices 👨‍💻
+- [ ] Publish basic .zip or .tar file to bring a collection of useful playbooks into isolated environments
+- [ ] 
 
 ## Playbooks
 
@@ -16,3 +18,4 @@ setupAccessPorts.yml  | Configures generic functionality for a Layer2 access por
 setupNTP.yml          | Configures any number of NTP servers with MD5 authentication
 
 ## Lab Environment
+![Lab Environment](https://i.imgur.com/sAibkpG.png)
