@@ -19,7 +19,8 @@ Playbook              | Features | Status
 createFallbackAdmin.yml                                                                                             | Creates or changes the password for a local fallback administrative account and saves the configuration   | ✖️
 removeLocalAccount.yml                                                                                              | Deletes a local account and saves the configuration                                                       | ✖️
 bouncePort.yml                                                                                                      | Shut/No Shut a port to resolve a port-security issue where automatic err-disable failsafes are not used   | ✖️
-
+nexusSetup.yml                                                                                                      | Configures required port-controls, security, logging, etc. functionality on a new device.                 | ✖️
+iosxeSetup.yml                                                                                                      | Configures required port-controls, security, logging, etc. functionality on a new device.                 | ✖️      
 
 ## Lab Environment
 ![Lab Environment](https://i.imgur.com/sAibkpG.png)
