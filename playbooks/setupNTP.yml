@@ -5,7 +5,7 @@
   connection: network_cli
 
   tasks:
-    - name: Configuring NTP Keys from Ansible-Vault
+    - name: Configuring NTP Keys with Ansible-Vault
       ios_config:
         lines:
           - "ntp authentication-key {{ item.keyNumb }} md5 {{ item.MD5Key }}"
