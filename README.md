@@ -1,5 +1,5 @@
 # LearningAnsible
-A collection of my plays and playbooks as I learn Ansible within my virtual lab environment. This collection is not maintained for production use but is instead catered for my testing and learning/devlopment.
+A collection of my plays and playbooks as I learn Ansible within my virtual lab environment. This collection is not maintained for production use but is instead catered for my testing and learning/development.
 
 ## Goals
 - [X] Create Operational Playbooks 👍
