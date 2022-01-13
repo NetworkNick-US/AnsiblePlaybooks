@@ -31,7 +31,7 @@ iosxeSetup.yml                                                                  
     <summary>Vault Information</summary>
     
   ```diff
-  - All Vault Passwords: VaultTest4321
+  - All Vault Passwords: TestVault4321
   - Enable Password: BigLongPassword123!!
   - NTP Shared Key: TestKey123/TestKey1234
   ```
