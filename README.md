@@ -16,7 +16,7 @@ Playbook              | Features | Status
 [changeEnable.yml](https://github.com/NetworkNick-io/LearningAnsible/blob/main/playbooks/changeEnable.yml)          | Change the enable password on all network devices | ✔️
 [setupAccessPorts.yml](https://github.com/NetworkNick-io/LearningAnsible/blob/main/playbooks/setupAccessPorts.yml)  | Configures generic functionality for a Layer2  access port | ✔️
 [setupNTP.yml](https://github.com/NetworkNick-io/LearningAnsible/blob/main/playbooks/setupNTP.yml)                  | Configures any number of NTP servers with MD5  authentication | ✔️
-createFallbackAdmin.yml                                                                                             | Create(s) or changes the password for a local fallback administrative account | ✖️
+createFallbackAdmin.yml                                                                                             | Creates or changes the password for a local fallback administrative account and saves the configuration | ✖️
 removeLocalAccount.yml                                                                                              | Deletes a local account and saves the configuration | ✖️
 bouncePort.yml                                                                                                      | Shut/No Shut a port to resolve a port-security issue where automatic err-disable failsafes are not used | ✖️
 
