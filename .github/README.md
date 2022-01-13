@@ -36,3 +36,6 @@ iosxeSetup.yml                                                                  
   - NTP Shared Key: TestKey123/TestKey1234
   ```
 </details>
+
+## LICENSE
+[License](https://github.com/NetworkNick-io/LearningAnsible/blob/main/.github/LICENSE) information for this repository can be found within the `./github` directory.
