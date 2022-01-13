@@ -18,6 +18,7 @@ Playbook              | Features | Status
 [setupNTP.yml](https://github.com/NetworkNick-io/LearningAnsible/blob/main/playbooks/setupNTP.yml)                  | Configures any number of NTP servers with MD5  authentication | ✔️
 createFallbackAdmin.yml                                                                                             | Create(s) or changes the password for a local fallback administrative account | ✖️
 removeLocalAccount.yml                                                                                              | Deletes a local account and saves the configuration | ✖️
+bouncePort.yml                                                                                                      | Shut/No Shut a port to resolve a port-security issue where automatic err-disable failsafes are not used | ✖️
 
 
 ## Lab Environment
