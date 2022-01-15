@@ -1,0 +1,17 @@
+---
+- name:  Create a local administrative account on IOS and IOS XE Devices
+  hosts: IOS
+  gather_facts: false
+  connection: local
+
+  tasks:
+    - name: Create IOS and IOS XE Account
+    
+- name:  Create a local administrative account on NXOS Devices
+  hosts: NXOS
+  gather_facts: false
+  connection: local
+
+  tasks:
+    - name: Create a local administrative account on NXOS Devices 
+      
