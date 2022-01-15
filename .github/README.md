@@ -22,7 +22,7 @@ bouncePort.yml                                                                  
 nexusSetup.yml                                                                                                      | Configures required port-controls, security, logging, etc. functionality on a new device.                 | ✖️
 iosxeSetup.yml                                                                                                      | Configures required port-controls, security, logging, etc. functionality on a new device.                 | ✖️      
 
-## Lab Environment
+## Environment
 ![Lab Environment](https://i.imgur.com/sAibkpG.png)
 
 ## Follow Along
