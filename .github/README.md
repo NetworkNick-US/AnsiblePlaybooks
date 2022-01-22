@@ -36,10 +36,11 @@ iosxeSetup.yml                                                                  
   - NTP Shared Key: TestKey123/TestKey1234
   ```
 </details>
+
 <details>
 <summary>Caveats</summary>
-  ```diff
-  - This environment supports dropping authenticated users into enable mode by default. If your environment does not or cannot support this, you will have to append become: yes, become_method: enable, and become_password: enablePW, to your playbook, vault, or var files. 
+      ```diff
+  - This environment supports dropping authenticated users into enable mode by default. If your environment does not or cannot support this, you will have to append become: yes, become_method: enable, and become_password: enablePW, to your playbook, vault, or var files.
   + https://docs.ansible.com/ansible/latest/network/getting_started/network_differences.html#privilege-escalation)
   - Certain playbook features (namely connection:local) is not ideal for production use. Best-practices involve implementing connection: network_cli, but this is not supported in my virtual environment.
   ```
