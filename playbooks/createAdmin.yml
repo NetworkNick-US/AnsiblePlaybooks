@@ -2,7 +2,7 @@
 - name:  Create a local administrative account on IOS and IOS XE Devices
   hosts: IOS
   gather_facts: false
-  connection: local
+  connection: network_cli
 
   tasks:
     - name: Create IOS and IOS XE Account

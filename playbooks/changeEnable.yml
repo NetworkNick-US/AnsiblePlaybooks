@@ -2,7 +2,7 @@
 - name: Change Enable Password on All Devices 
   hosts: ALL
   gather_facts: false
-  connection: local
+  connection: network_cli
 
   tasks:
     - name: Change Enable PW
