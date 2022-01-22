@@ -46,15 +46,15 @@
     - name: get L2 ints
       ios_facts:
         gather_network_resources: l2_interfaces
-      register: blah
+      register: output
     - name: Print the L2 interfaces
       debug:
-        var: blah
+        var: output
 
     - name: get VLANs
       ios_facts:
         gather_network_resources: vlans
-      register: blah
+      register: output
     - name: Print the VLANs
       debug:
-        var: blah
+        var: output
