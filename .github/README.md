@@ -22,6 +22,13 @@ bouncePort.yml                                                                  
 nexusSetup.yml                                                                                                      | Configures required port-controls, security, logging, etc. functionality on a new device.                 | ✖️
 iosxeSetup.yml                                                                                                      | Configures required port-controls, security, logging, etc. functionality on a new device.                 | ✖️      
 
+## Testbed
+These playbooks were made for testing certain features or Ansible modules and aren't made for functional purposes.
+
+Playbook              | Features | Functional
+:-------------         | ------------- | -------------
+[IOSfacts.yml](https://github.com/NetworkNick-io/LearningAnsible/blob/main/testbed/IOSfacts.yml) | Prints the output for several subsets of cisco.ios.ios_facts | 🚫
+
 ## Environment
 ![Lab Environment](https://i.imgur.com/sAibkpG.png)
 
