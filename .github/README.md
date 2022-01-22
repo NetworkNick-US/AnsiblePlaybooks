@@ -4,7 +4,7 @@ A collection of my playbooks as I learn Ansible within my virtual lab environmen
 ## Goals
 - [X] Create Operational Playbooks 👍
 - [X] Implement Ansible-Vault for sensitive information 📋
-- [ ] Publish basic .zip or .tar file to bring a collection of useful playbooks into isolated environments 🛂
+- [X] Publish basic .zip or .tar file to bring a [collection of useful playbooks](https://github.com/NetworkNick-io/Operations/releases) into isolated environments 🛂
 - [ ] Create "one-touch" deployment playbook for Cisco IOS XE and NXOS network devices 👨‍💻
 - [ ] Simplify compliance and change-management with audit playbooks 🦺
 
