@@ -41,6 +41,6 @@ iosxeSetup.yml                                                                  
     <summary>Caveats</summary>
     
   ```diff
-  - This environment supports dropping authenticated users into enable mode by default. If your environment does not or cannot support this, you will have to ammend become: yes, become_method: enable, and become_password: enablePW, to your playbook, vault, or var files.
+  - This environment supports dropping authenticated users into enable mode by default. If your environment does not or cannot support this, you will have to append become: yes, become_method: enable, and become_password: enablePW, to your playbook, vault, or var files. [Ansible Documentation](https://docs.ansible.com/ansible/latest/network/getting_started/network_differences.html#privilege-escalation)
   ```
 </details>
