@@ -25,7 +25,7 @@ iosxeSetup.yml                                                                  
 ## Testbed
 These playbooks were made for testing certain features or Ansible modules and aren't made for functional purposes.
 
-Playbook              | Features | Functional
+Playbook              | Features | Useful
 :-------------         | ------------- | -------------
 [IOSfacts.yml](https://github.com/NetworkNick-io/LearningAnsible/blob/main/testbed/IOSfacts.yml) | Prints the output for several subsets of cisco.ios.ios_facts | 🚫
 
