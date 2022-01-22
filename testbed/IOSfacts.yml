@@ -1,0 +1,38 @@
+---
+- name: Testing Facts
+  hosts: Access1
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: Gather all legacy facts
+      ios_facts:
+        gather_subset: all
+      register: output
+    - name: Print the subset
+      debug:
+        var: output
+
+    - name: Gather min facts
+      ios_facts:
+        gather_subset: min
+      register: output
+    - name: Print the subset
+      debug:
+        var: output
+
+    - name: Gather hardware facts
+      ios_facts:
+        gather_subset: hardware
+      register: output
+    - name: Print the subset
+      debug:
+        var: output
+
+    - name: Gather all config facts
+      ios_facts:
+        gather_subset: config
+      register: output
+    - name: Print the subset
+      debug:
+        var: output
