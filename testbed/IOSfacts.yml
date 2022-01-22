@@ -1,7 +1,7 @@
 ---
 - name: Testing Facts
   hosts: Access1
-  connection: local
+  connection: network_cli
   gather_facts: false
 
   tasks:
@@ -36,3 +36,25 @@
     - name: Print the subset
       debug:
         var: output
+
+- name: Get L2 ints and VLANs
+  hosts: Access1
+  gather_facts: false
+  connection: local
+
+  tasks:
+    - name: get L2 ints
+      ios_facts:
+        gather_network_resources: l2_interfaces
+      register: blah
+    - name: Print the L2 interfaces
+      debug:
+        var: blah
+
+    - name: get VLANs
+      ios_facts:
+        gather_network_resources: vlans
+      register: blah
+    - name: Print the VLANs
+      debug:
+        var: blah
