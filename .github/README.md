@@ -36,3 +36,11 @@ iosxeSetup.yml                                                                  
   - NTP Shared Key: TestKey123/TestKey1234
   ```
 </details>
+
+<details>
+    <summary>Caveats</summary>
+    
+  ```diff
+  - This environment supports dropping authenticated users into enable mode by default. If your environment does not or cannot support this, you will have to ammend become: yes, become_method: enable, and become_password: enablePW, to your playbook, vault, or var files.
+  ```
+</details>
