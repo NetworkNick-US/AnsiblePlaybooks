@@ -11,7 +11,7 @@
         state: directory
       loop: "{{ All_Net_Devices }}"
 
-- name: Backup and Save IOS and IOS XE Device Configurations
+- name: Backup and Save for IOS and IOS XE
   hosts: IOS, IOSXE
   connection: network_cli
   gather_facts: false
@@ -27,7 +27,7 @@
       ios_config:
         save_when: always
 
-- name: Backup and Save NXOS Device Configurations
+- name: Backup and Save for NXOS
   hosts: NXOS
   connection: network_cli
   gather_facts: false
