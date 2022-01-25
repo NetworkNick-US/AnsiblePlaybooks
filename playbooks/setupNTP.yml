@@ -1,6 +1,6 @@
 ---
 - name: Configure NTP Servers
-  hosts: ALL
+  hosts: ALLdevices
   gather_facts: false
   connection: network_cli
 

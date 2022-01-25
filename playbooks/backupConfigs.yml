@@ -1,147 +1,44 @@
-#Switches
 ---
-- name: Gather Information About the Access Switches
-  hosts: AccessSWs
+- name: Verify directories exist for config backup
+  hosts: localhost
   connection: local
+  gather_facts: true
 
   tasks:
-    - name: Show running configuration
-      ios_command:
-        commands: show run
-      register: output_config
+    - name: Directory task
+      file:
+        path: "./ConfigBackup/{{ item }}"
+        state: directory
+      loop: "{{ All_Net_Devices }}"
 
-    - name: Show version information
-      ios_command:
-        commands:
-          - show version
-      register: output_version
-
-    - name: Show interface status
-      ios_command:
-        commands:
-          - show interface status
-      register: output_status
-
-    - name: Save Running Config to File
-      copy:
-        content: "{{ output_config.stdout[0] }}"
-        dest: "./restore/{{ inventory_hostname }}/RunningConfig-{{ ansible_date_time.iso8601 }}.txt"
-
-    - name: Save Version Information to File
-      copy:
-        content: "{{ output_version.stdout[0] }}"
-        dest: "./restore/{{ inventory_hostname }}/Version-{{ ansible_date_time.iso8601 }}.txt"
-
-    - name: Save Interface Status to File
-      copy:
-        content: "{{ output_status.stdout[0] }}"
-        dest: "./restore/{{ inventory_hostname }}/InterfaceStatus-{{ ansible_date_time.iso8601 }}.txt"
-
-#Routers
-- name: Gather Information About the Core Routers
-  hosts: CoreRTRs
-  connection: local
+- name: Backup and Save IOS and IOS XE Device Configurations
+  hosts: IOS, IOSXE
+  connection: network_cli
+  gather_facts: false
 
   tasks:
-    - name: Show running configuration
-      ios_command:
-        commands: show run
-      register: output_config
+    - name: Backup IOS and IOS XE Configs
+      ios_config:
+        backup: yes
+        backup_options:
+          - dir_path: "./ConfigBackup/{{ inventory_hostname }}"
 
-    - name: Show version information
-      ios_command:
-        commands:
-          - show version
-      register: output_version
+    - name: Save Config on IOS and IOS XE Devices
+      ios_config:
+        save_when: always
 
-    - name: Show interface IP assignment
-      ios_command:
-        commands:
-          - show ip int brief
-      register: output_ips
-
-    - name: Show Routing Table
-      ios_command:
-        commands:
-          - show ip route
-      register: output_route
-
-    - name: Save Running Config to File
-      copy:
-        content: "{{ output_config.stdout[0] }}"
-        dest: "./restore/{{ inventory_hostname }}/RunningConfig-{{ ansible_date_time.iso8601 }}.txt"
-
-    - name: Save Version Information to File
-      copy:
-        content: "{{ output_version.stdout[0] }}"
-        dest: "./restore/{{ inventory_hostname }}/Version-{{ ansible_date_time.iso8601 }}.txt"
-
-    - name: Save Interface IPs to File
-      copy:
-        content: "{{ output_ips.stdout[0] }}"
-        dest: "./restore/{{ inventory_hostname }}/InterfaceIP-{{ ansible_date_time.iso8601 }}.txt"
-
-    - name: Save Routing Table to File
-      copy:
-        content: "{{ output_route.stdout[0] }}"
-        dest: "./restore/{{ inventory_hostname }}/RoutingTable-{{ ansible_date_time.iso8601 }}.txt"
-
-#L3 Switches
-- name: Gather Information About the Core Routers
-  hosts: DistSWs
-  connection: local
+- name: Backup and Save NXOS Device Configurations
+  hosts: NXOS
+  connection: network_cli
+  gather_facts: false
 
   tasks:
-    - name: Show running configuration
-      ios_command:
-        commands: show run
-      register: output_config
+    - name: Backup NXOS Configs
+      nxos_config:
+        backup: yes
+        backup_options:
+          - dir_path: "./ConfigBackup/{{ inventory_hostname }}"
 
-    - name: Show version information
-      ios_command:
-        commands:
-          - show version
-      register: output_version
-
-    - name: Show interface status
-      ios_command:
-        commands:
-          - show interface status
-      register: output_status
-
-    - name: Show interface IP assignment
-      ios_command:
-        commands:
-          - show ip int brief
-      register: output_ips
-
-    - name: Show Routing Table
-      ios_command:
-        commands:
-          - show ip route
-      register: output_route
-
-    - name: Save Running Config to File
-      copy:
-        content: "{{ output_config.stdout[0] }}"
-        dest: "./restore/{{ inventory_hostname }}/RunningConfig-{{ ansible_date_time.iso8601 }}.txt"
-
-    - name: Save Version Information to File
-      copy:
-        content: "{{ output_version.stdout[0] }}"
-        dest: "./restore/{{ inventory_hostname }}/Version-{{ ansible_date_time.iso8601 }}.txt"
-
-    - name: Save Interface Status to File
-      copy:
-        content: "{{ output_status.stdout[0] }}"
-        dest: "./restore/{{ inventory_hostname }}/InterfaceIP-{{ ansible_date_time.iso8601 }}.txt"
-
-    - name: Save Interface IPs to File
-      copy:
-        content: "{{ output_ips.stdout[0] }}"
-        dest: "./restore/{{ inventory_hostname }}/InterfaceIP-{{ ansible_date_time.iso8601 }}.txt"
-
-    - name: Save Routing Table to File
-      copy:
-        content: "{{ output_route.stdout[0] }}"
-        dest: "./restore/{{ inventory_hostname }}/RoutingTable-{{ ansible_date_time.iso8601 }}.txt"
+    - name: Save Config on NXOS Devices
+      nxos_config:
+        save_when: always

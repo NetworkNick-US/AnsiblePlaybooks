@@ -1,4 +1,4 @@
-[ALL]
+[ALLdevices]
 Core1
 Core2
 Core3
@@ -96,3 +96,8 @@ Access4
 Access5
 Access6
 Access7
+
+[IOSXE]
+
+[mylocalhost]
+localhost ansible_connection=local

@@ -1,6 +1,6 @@
 ---
 - name: Change Enable Password on All Devices 
-  hosts: all
+  hosts: ALLdevices
   gather_facts: false
   connection: network_cli
 
