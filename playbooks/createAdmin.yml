@@ -7,11 +7,13 @@
   tasks:
     - name: Create IOS and IOS XE Account
       ios_user:
-        name: {{ fallbackAdmin }}
+        name: "{{ fallbackAdmin }}"
+        password_type: secret
         hashed_password:
           type: 5
-          value: {{ fallbackAdminPW }}
+          value: "{{ fallbackAdminPW }}"
         privilege: 15
+        state: present
         update_password: always
     
 - name:  Create a local administrative account on NXOS Devices
@@ -22,9 +24,10 @@
   tasks:
     - name: Create a local administrative account on NXOS Devices
       nxos_user:
-        name: {{ fallbackAdmin }}
+        name: "{{ fallbackAdmin }}"
         hashed_password:
           type: 5
-          value: {{ fallbackAdminPW }}
+          value: "{{ fallbackAdminPW }}"
         role: network-admin
+        state: present
         update_password: always
