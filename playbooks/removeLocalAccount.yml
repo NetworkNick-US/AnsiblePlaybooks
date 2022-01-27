@@ -10,7 +10,11 @@
         name: "{{ item }}"
         state: absent
       loop: "{{ oldUsers }}"
-    
+
+    - name: Save Config on IOS and IOS XE Devices
+      ios_config:
+        save_when: always
+
 - name:  Remove old local administrative accounts on NXOS Devices
   hosts: NXOS
   gather_facts: false
@@ -22,3 +26,7 @@
         name: "{{ item }}"
         state: absent
       loop: "{{ oldUsers }}"
+
+    - name: Save Config on NXOS Devices
+      nxos_config:
+        save_when: always

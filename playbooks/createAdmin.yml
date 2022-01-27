@@ -15,7 +15,11 @@
         privilege: 15
         state: present
         update_password: always
-    
+
+    - name: Save Config on IOS and IOS XE Devices
+      ios_config:
+        save_when: always
+
 - name:  Create a local administrative account on NXOS Devices
   hosts: NXOS
   gather_facts: false
@@ -31,3 +35,7 @@
         role: network-admin
         state: present
         update_password: always
+
+    - name: Save Config on NXOS Devices
+      nxos_config:
+        save_when: always
