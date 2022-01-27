@@ -1,0 +1,24 @@
+---
+- name:  Remove old local administrative accounts on IOS and IOS XE Devices
+  hosts: IOS
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+    - name: Remove a Local Account
+      ios_user:
+        name: "{{ item }}"
+        state: absent
+      loop: "{{ oldUsers }}"
+    
+- name:  Remove old local administrative accounts on NXOS Devices
+  hosts: NXOS
+  gather_facts: false
+  connection: local
+
+  tasks:
+    - name: Remove a Local Account
+      nxos_user:
+        name: "{{ item }}"
+        state: absent
+      loop: "{{ oldUsers }}"
