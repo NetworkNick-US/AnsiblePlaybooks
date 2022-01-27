@@ -6,6 +6,8 @@
 
   tasks:
     - name: Create IOS and IOS XE Account
+      ios_user:
+
     
 - name:  Create a local administrative account on NXOS Devices
   hosts: NXOS
@@ -13,5 +15,9 @@
   connection: local
 
   tasks:
-    - name: Create a local administrative account on NXOS Devices 
+    - name: Create a local administrative account on NXOS Devices
+      nxos_user:
+
+        update_password: always
+
       
