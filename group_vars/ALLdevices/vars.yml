@@ -5,3 +5,7 @@ NTP_Servers:
     keyNumber: 2
 fallbackAdmin: AnsibleAdmin
 fallbackAdminPW: 5421525
+oldUsers:
+  - user1
+  - user2
+  - user3

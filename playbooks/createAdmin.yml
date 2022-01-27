@@ -1,6 +1,6 @@
 ---
 - name:  Create a local administrative account on IOS and IOS XE Devices
-  hosts: IOS,IOSXE
+  hosts: IOS, IOSXE
   gather_facts: false
   connection: network_cli
 
