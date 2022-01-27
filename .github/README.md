@@ -40,7 +40,8 @@ Playbook              | Features | Useful
   ```diff
   - All Vault Passwords: TestVault4321
   - Enable Password: BigLongPassword123!!
-  - NTP Shared Key: TestKey123/TestKey1234
+  - NTP Shared Key: TestKey123/TestKey1234s
+  - AnsibleAdmin Account Password: MD5passwordtest!
   ```
 </details>
 
