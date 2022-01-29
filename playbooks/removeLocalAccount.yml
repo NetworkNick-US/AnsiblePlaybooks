@@ -2,7 +2,7 @@
 - name:  Remove old local administrative accounts on IOS and IOS XE Devices
   hosts: IOS
   gather_facts: false
-  connection: network_cli
+  connection: local
 
   tasks:
     - name: Remove a Local Account

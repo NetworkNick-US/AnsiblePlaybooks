@@ -6,6 +6,6 @@ NTP_Servers:
 fallbackAdmin: AnsibleAdmin
 fallbackAdminPW: $1$pass$BZ4dmmi.o9kvTZZZ850o71
 oldUsers:
-  - user1
-  - user2
-  - user3
+  - AnsibleAdmin1
+  - AnsibleAdmin2
+  - AnsibleAdmin3
