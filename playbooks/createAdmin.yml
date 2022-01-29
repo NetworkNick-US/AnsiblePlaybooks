@@ -23,7 +23,7 @@
 - name:  Create a local administrative account on NXOS Devices
   hosts: NXOS
   gather_facts: false
-  connection: local
+  connection: network_cli
 
   tasks:
     - name: Create a local administrative account on NXOS Devices
@@ -32,7 +32,7 @@
         hashed_password:
           type: 5
           value: "{{ fallbackAdminPW }}"
-        role: network-admin
+        roles: network-admin
         state: present
         update_password: always
 
