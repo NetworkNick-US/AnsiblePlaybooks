@@ -26,12 +26,10 @@
   connection: network_cli
 
   tasks:
-    - name: Create a local administrative account on NXOS Devices
+    - name: Create NXOS Account
       nxos_user:
         name: "{{ fallbackAdmin }}"
-        hashed_password:
-          type: 5
-          value: "{{ fallbackAdminPW }}"
+        configured_password: "{{ fallbackAdminPW_clear }}"
         roles: network-admin
         state: present
         update_password: always
