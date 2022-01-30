@@ -1,7 +1,7 @@
 ---
 - name: Change Enable Password on All Devices
   hosts: NXOS
-  gather_facts: false
+  gather_facts: true
   connection: network_cli
 
   tasks:
