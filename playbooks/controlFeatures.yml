@@ -1,0 +1,12 @@
+---
+- name: Change Enable Password on All Devices
+  hosts: NXOS
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+    - name: Enable desired features
+      nxos_feature:
+        feature: "{{ item }}"
+        state: enabled
+      loop: "{{ nexusFeatures }}"

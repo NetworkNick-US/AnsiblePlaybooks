@@ -1,0 +1,6 @@
+nexusFeatures:
+  - ospf
+  - ospfv3
+  - lacp
+  - hsrp
+  - interface-vlan
