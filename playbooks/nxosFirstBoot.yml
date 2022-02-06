@@ -1,0 +1,53 @@
+#designed to be run locally on first boot/configuration of a new Cisco Nexus Switch
+---
+- name: Nexus Device Management Features
+  hosts: newNexus
+  gather_facts: no
+
+
+#install features [ udld, ntp, etc. ]
+
+#remove unnecessary features [telnet, wccp, imp, nxapi, vtp, etc.]
+
+#turn on FIPS mode
+
+#ntp
+
+#set timezone
+
+
+#logging server(s)
+
+#logging - lower level to 6 and create logfile w/ manually specified size
+
+#banner
+
+#password strength checking
+
+#login block after X incorrect login attempts within Y minutes
+
+#enable pass
+
+#VTY session limiting
+
+#VTY/console timeout after X minutes of inactivity
+
+#VTY ACL
+
+- name: Nexus Switch Functionality
+  hosts: newNexus
+  gather_facts: no
+
+
+#VLANs [ including blackhole and native ]
+
+#Access Ports
+  #unknown unicast flood blocking (UUFB)
+  #STP loopguard, rootguard, BPDUguard
+  #storm-control broadcast/unicast
+
+#Trunks
+
+#unused ports - shutdown/blackhole vlan
+
+#igmp snooping - all VLANs
