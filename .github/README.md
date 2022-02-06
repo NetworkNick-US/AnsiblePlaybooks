@@ -1,5 +1,5 @@
-# LearningAnsible
-A collection of my playbooks as I learn Ansible within my virtual lab environment. This collection is not maintained for production use but is instead catered for my testing and learning/development.
+# Ansible Playbooks
+A collection of my playbooks as I learn Ansible within my virtual environment. This collection is not maintained for production use but is instead catered for my testing and learning/development.
 
 ## Goals
 - [X] Create Operational Playbooks 👍
@@ -20,7 +20,7 @@ Playbook              | Features | Status
 | [removeLocalAccount.yml](https://github.com/NetworkNick-io/LearningAnsible/blob/main/playbooks/removeLocalAccount.yml)                                                                                              | Deletes a local account and saves the configuration                                                       | ✔️     |
 | [controlFeatures.yml](https://github.com/NetworkNick-US/LearningAnsible/blob/main/playbooks/controlFeatures.yml) | Installs the appropriate features on Nexus switches. | ✔️     |
 | [confibureBanner.yml](https://github.com/NetworkNick-US/LearningAnsible/blob/main/playbooks/setupBanner.yml) | Setup and configure a login banner on both NXOS and IOS/IOS XE Cisco devices for security and legal liability purposes. | ✔️     |
-| [nxosFirstBoot.yml](1.1.1.1) | Hardening script for use on new devices | ✖️     |
+| [nxosFirstBoot.yml](https://github.com/NetworkNick-US/AnsiblePlaybooks/blob/main/playbooks/nxosFirstBoot.yml) | Hardening script for use on new devices | ✖️     |
 | bouncePort.yml                                                                                                      | Shut/No Shut a port to resolve a port-security issue where automatic err-disable failsafes are not used   | ✖️     |
 | nexusSetup.yml                                                                                                      | Configures required port-controls, security, logging, etc. functionality on a new device.                 | ✖️     |
 | iosxeSetup.yml                                                                                                      | Configures required port-controls, security, logging, etc. functionality on a new device.                 | ✖️     |    
