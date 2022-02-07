@@ -3,7 +3,9 @@
 - name: Nexus Device Management Features
   hosts: newNexus
   gather_facts: no
-
+  vars_file:
+    - ./vars/nexusStandup.yml
+    - ./vars/companyBanner.cfg
 
 #install features [ udld, ntp, etc. ]
 

@@ -1,0 +1,33 @@
+#This should be utilized as an Ansible-vault file in production environments
+goodFeatures:
+  - lacp
+  - ntp
+  - udld
+  - ospf
+  - ospfv3
+  - hsrp
+  - interface-vlan
+
+badFeatures:
+  - telnet
+  - wccp
+  - imp
+  - nxapi
+  - vtp
+
+NTP_Servers:
+  - Server: 1.1.1.1
+    keyNumber: 1
+    MD5key: 789789789798
+  - Server: 2.2.2.2
+    keyNumber: 2
+    MD5key: 789789789798
+
+logServers:
+  - 192.168.255.10
+  - 192.168.254.10
+
+enableSecret: $uper$ecretCompany$tuff666
+vtySessionLimit: 2
+vtyTimeout: 10
+
