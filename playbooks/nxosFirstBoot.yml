@@ -18,7 +18,6 @@
 
 #set timezone
 
-
 #logging server(s)
 
 #logging - lower level to 6 and create logfile w/ manually specified size
@@ -44,6 +43,8 @@
 
 #VLANs [ including blackhole and native ]
 
+#igmp snooping - all VLANs
+
 #Access Ports
   #unknown unicast flood blocking (UUFB)
   #STP loopguard, rootguard, BPDUguard
@@ -52,5 +53,3 @@
 #Trunks
 
 #unused ports - shutdown/blackhole vlan
-
-#igmp snooping - all VLANs

@@ -1,0 +1,88 @@
+VLANS:
+  - vlanID: 100
+    name: accounting
+  - vlanID: 200
+    name: infosec
+  - vlanID: 300
+    name: IT
+  - vlanID: 444
+    name: VOIP
+  - vlanID: 999
+    name: dontuse
+  - vlanID: 2
+    name: nativeTrunk
+
+VoiceVLAN: 444
+nativeVLAN: 2
+unusedPortVLAN: 999
+
+stormControlBroadcast:
+  - start: 50
+    end: 25
+stormControlUnicast:
+  - start: 95
+    end: 90
+
+#in the future, this section will be automatically generated with a Python script
+AccessPorts:
+  - portNumber: 1
+    accessVLAN: 100
+  - portNumber: 2
+    accessVLAN: 100
+  - portNumber: 3
+    accessVLAN: 100
+  - portNumber: 4
+    accessVLAN: 200
+  - portNumber: 5
+    accessVLAN: 200
+  - portNumber: 6
+    accessVLAN: 200
+  - portNumber: 7
+    accessVLAN: 200
+  - portNumber: 8
+    accessVLAN: 200
+  - portNumber: 9
+    accessVLAN: 200
+  - portNumber: 10
+    accessVLAN: 200
+  - portNumber: 11
+    accessVLAN: 200
+  - portNumber: 12
+    accessVLAN: 200
+  - portNumber: 13
+    accessVLAN: 200
+  - portNumber: 14
+    accessVLAN: 200
+  - portNumber: 15
+    accessVLAN: 200
+  - portNumber: 16
+    accessVLAN: 200
+  - portNumber: 17
+    accessVLAN: 200
+  - portNumber: 18
+    accessVLAN: 300
+  - portNumber: 19
+    accessVLAN: 300
+  - portNumber: 20
+    accessVLAN: 999
+  - portNumber: 21
+    accessVLAN: 999
+  - portNumber: 22
+    accessVLAN: 999
+  - portNumber: 23
+    accessVLAN: 999
+
+TrunkPorts:
+  - portNumber: 24
+
+allowedVLANTrunk:
+  - 100
+  - 200
+  - 300
+  - 444
+
+shutdownPorts:
+  - 20
+  - 21
+  - 22
+  - 23
