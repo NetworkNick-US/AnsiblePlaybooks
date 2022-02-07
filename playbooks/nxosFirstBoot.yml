@@ -4,8 +4,9 @@
   hosts: newNexus
   gather_facts: no
   vars_file:
-    - ./vars/nexusStandup.yml
+    - ./vars/nexusSecurity.yml
     - ./vars/companyBanner.cfg
+    - ./vars/nexusConfig.yml
 
 #install features [ udld, ntp, etc. ]
 
