@@ -69,11 +69,10 @@ AccessPorts:
     accessVLAN: 999
   - portNumber: 22
     accessVLAN: 999
-  - portNumber: 23
-    accessVLAN: 999
 
 TrunkPorts:
-  - portNumber: 24
+  - 24
+  - 23
 
 allowedVLANTrunk:
   - 100
@@ -85,4 +84,3 @@ shutdownPorts:
   - 20
   - 21
   - 22
-  - 23
