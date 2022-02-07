@@ -30,4 +30,11 @@ logServers:
 enableSecret: $uper$ecretCompany$tuff666
 vtySessionLimit: 2
 vtyTimeout: 10
+vtyAllowedSubnets:
+  - 192.168.1.0 0.0.0.255
+  - 192.168.2.0 0.0.0.255
+  - 192.168.3.0 0.0.0.255
+  - 192.168.255.2 0.0.0.0
+  - 192.168.254.2 0.0.0.0
+
 
