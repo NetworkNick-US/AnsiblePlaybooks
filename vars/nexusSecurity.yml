@@ -7,6 +7,7 @@ goodFeatures:
   - ospfv3
   - hsrp
   - interface-vlan
+  - scp-server
 
 badFeatures:
   - telnet
