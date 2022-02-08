@@ -16,6 +16,8 @@ badFeatures:
   - nxapi
   - vtp
 
+properHostname: Switch777
+
 NTP_Servers:
   - Server: 1.1.1.1
     keyNumber: 1
