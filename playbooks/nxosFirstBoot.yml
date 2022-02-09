@@ -40,12 +40,12 @@
 
     - name: Setup Login Banner
       nxos_banner:
-        banner: motd
+        nxos.banner: motd
         text: "{{ lookup('file', './vars/companyBanner.cfg', errors='ignore') }}"
         state: present
 
     - name: Setup NTP with authentication keys
-      nxos_ntp_global:
+      cisco.nxos.nxos_ntp_global: #Ansible 2.9 is throwing an error if not using the full module name
         config:
           authenticate: yes
           authentication_keys:
