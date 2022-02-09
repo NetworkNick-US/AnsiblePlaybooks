@@ -67,7 +67,7 @@
         lines:
           - clock timezone EST -5 0
 
-    - name: Log Critical Messages to the Console
+    - name: Console Logging, Local Logfile, Timestamps, and Origin
       cisco.nxos.nxos_logging_global: #Ansible 2.9.6 is throwing an error if not using the full module name
         config:
           console:
@@ -76,6 +76,16 @@
           monitor:
             - severity: critical
             - state: enabled
+          logfile:
+            - name: lcllogs.txt
+            - persistent _threshold: 75
+            - severity: informational
+            - size: 100000000
+            - state: enabled
+          origin_id:
+            - hostname: yes
+          timestamp: milliseconds
+        state: merged
 
 #logging server(s)
 
