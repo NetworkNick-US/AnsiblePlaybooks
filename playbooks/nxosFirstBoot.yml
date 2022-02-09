@@ -45,7 +45,7 @@
         state: present
 
     - name: Setup NTP with authentication keys
-      cisco.nxos.nxos_ntp_global: #Ansible 2.9 is throwing an error if not using the full module name
+      cisco.nxos.nxos_ntp_global: #Ansible 2.9.6 is throwing an error if not using the full module name
         config:
           authenticate: yes
           authentication_keys:
@@ -66,6 +66,16 @@
       nxos_config:
         lines:
           - clock timezone EST -5 0
+
+    - name: Log Critical Messages to the Console
+      cisco.nxos.nxos_logging_global: #Ansible 2.9.6 is throwing an error if not using the full module name
+        config:
+          console:
+            - severity: critical
+            - state: enabled
+          monitor:
+            - severity: critical
+            - state: enabled
 
 #logging server(s)
 
