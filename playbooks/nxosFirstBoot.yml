@@ -3,7 +3,8 @@
 - name: Nexus Device Management Features
   hosts: newNexus
   gather_facts: no
-  vars_file:
+  connection: network_cli
+  vars_files:
     - ./vars/nexusSecurity.yml
     - ./vars/nexusConfig.yml
 
