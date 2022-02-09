@@ -80,6 +80,7 @@
 - name: Nexus Switch Functionality
   hosts: newNexus
   gather_facts: no
+  connection: network_cli
 
 
 #VLANs [ including blackhole and native ]
