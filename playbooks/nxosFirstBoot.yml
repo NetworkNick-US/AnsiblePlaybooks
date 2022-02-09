@@ -6,13 +6,42 @@
   vars_file:
     - ./vars/nexusSecurity.yml
     - ./vars/nexusConfig.yml
-    - ./vars/companyBanner.cfg
 
-#install features [ udld, ntp, etc. ]
+  tasks:
+    - name: Set correct hostname
+      nxos_config:
+        lines:
+          - "hostname {{ properHostname }}"
 
-#remove unnecessary features [telnet, wccp, imp, nxapi, vtp, etc.]
+    - name: Enable desired features
+      nxos_feature:
+        feature: "{{ item }}"
+        state: enabled
+      loop: "{{ goodFeatures }}"
 
-#turn on FIPS mode
+    - name: Remove unncessary/unsecure features
+      nxos_feature:
+        feature: "{{ item }}"
+        state: disabled
+      loop: "{{ badFeatures }}"
+
+    - name: FIPS mode, Password Strength, and Failed Login Blocking
+      nxos_config:
+        lines:
+          - fips mode enable
+          - password strength-check
+          - login block-for 900 attempts 3 within 180
+
+    - name: Configure Enable Password
+      nxos_config:
+        lines:
+          - "enable secret {{ enableSecret }}"
+
+    - name: Setup Login Banner
+      nxos_banner:
+        banner: motd
+        text: "{{ lookup('file', './vars/companyBanner.cfg', errors='ignore') }}"
+        state: present
 
 #ntp
 
@@ -21,14 +50,6 @@
 #logging server(s)
 
 #logging - lower level to 6 and create logfile w/ manually specified size
-
-#banner
-
-#password strength checking
-
-#login block after X incorrect login attempts within Y minutes
-
-#enable pass
 
 #VTY session limiting
 
