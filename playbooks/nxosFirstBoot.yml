@@ -8,7 +8,7 @@
     - ./vars/nexusConfig.yml
 
   tasks:
-    - name: Set correct hostname
+    - name: Set Correct Hostname
       nxos_config:
         lines:
           - "hostname {{ properHostname }}"
@@ -43,19 +43,38 @@
         text: "{{ lookup('file', './vars/companyBanner.cfg', errors='ignore') }}"
         state: present
 
-#ntp
+    - name: Setup NTP with authentication keys
+      nxos_ntp_global:
+        config:
+          authenticate: yes
+          authentication_keys:
+            - encryption: 0
+            - id: "{{ item.keyNumber }}"
+            - key: "{{ item.MD5key }}"
+          trusted keys:
+            - key_id: "{{ item.keyNumber }}"
+          servers:
+            - key_id: "{{ item.keyNumber }}"
+            - server: "{{ item.Server }}"
+            - use_vrf: default
+          logging: yes
+        state: merged
+      loop: "{{ NTP_Servers }}"
 
-#set timezone
+    - name: Set Timezone
+      nxos_config:
+        lines:
+          - clock timezone EST -5 0
 
 #logging server(s)
 
 #logging - lower level to 6 and create logfile w/ manually specified size
 
+#VTY ACL
+
 #VTY session limiting
 
 #VTY/console timeout after X minutes of inactivity
-
-#VTY ACL
 
 - name: Nexus Switch Functionality
   hosts: newNexus

@@ -8,6 +8,7 @@ goodFeatures:
   - hsrp
   - interface-vlan
   - scp-server
+  - ntp
 
 badFeatures:
   - telnet
