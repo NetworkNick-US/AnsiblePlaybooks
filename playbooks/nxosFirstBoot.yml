@@ -98,7 +98,7 @@
       loop: "{{ logServers }}"
 
     - name: Setup ACL for VTY Lines (Permits)
-      cisco.nxos.nxos_acls:
+      cisco.nxos.nxos_acls: #Ansible 2.9.6 is throwing an error if not using the full module name
         config:
           - afi: ipv4
             acls:
@@ -117,7 +117,7 @@
       loop: "{{ vtyAllowedSubnets }}"
 
     - name: Setup ACL for VTY Lines (Log Deny Statement)
-      cisco.nxos.nxos_acls:
+      cisco.nxos.nxos_acls: #Ansible 2.9.6 is throwing an error if not using the full module name
         config:
           - afi: ipv4
             acls:
