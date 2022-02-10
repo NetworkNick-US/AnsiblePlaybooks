@@ -14,7 +14,6 @@ VLANS:
 
 VoiceVLAN: 444
 unusedPortVLAN: 999
-nativeVLAN: 2
 
 stormControlBroadcast: 20
 stormControlMulticast: 40
@@ -67,9 +66,12 @@ AccessPorts:
   - portNumber: 22
     accessVLAN: 999
 
+nativeVLAN: 2
 TrunkPorts:
-  - 24
-  - 23
+  - portNumber: 23
+    allowedVLANList: 100, 200, 300, 444
+  - portNumber: 24
+    allowedVLANList: 100, 200, 300, 444
 
 allowedVLANTrunk:
   - 100
