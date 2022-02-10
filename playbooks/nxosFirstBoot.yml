@@ -201,7 +201,7 @@
           - errdisable recovery cause psecure-violation
           - errdisable recovery interval 60
 
-    - name: Setup Access Ports
+    - name: Setup Trunk Ports
       nxos_l2_interfaces:
         config:
           name: "ethernet {{ item.portNumber }}"
