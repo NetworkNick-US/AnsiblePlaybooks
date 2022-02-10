@@ -73,12 +73,6 @@ TrunkPorts:
   - portNumber: 24
     allowedVLANList: 100, 200, 300, 444
 
-allowedVLANTrunk:
-  - 100
-  - 200
-  - 300
-  - 444
-
 shutdownPorts:
   - 20
   - 21
