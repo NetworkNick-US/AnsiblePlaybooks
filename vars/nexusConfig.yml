@@ -16,14 +16,11 @@ VoiceVLAN: 444
 nativeVLAN: 2
 unusedPortVLAN: 999
 
-stormControlBroadcast:
-  - start: 50
-    end: 25
-stormControlUnicast:
-  - start: 95
-    end: 90
+stormControlBroadcast: 20
+stormControlMulticast: 40
+stormControlUnicast: 70
 
-#in the future, this section will be automatically generated with a Python script
+#Future Goals: this section will be automatically generated with a Python script
 AccessPorts:
   - portNumber: 1
     accessVLAN: 100

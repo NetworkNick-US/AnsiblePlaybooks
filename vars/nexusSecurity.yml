@@ -1,4 +1,4 @@
-#This should be utilized as an Ansible-vault file in production environments
+#This should be implemented as an Ansible-vault file in production environments
 goodFeatures:
   - lacp
   - ntp
@@ -9,6 +9,7 @@ goodFeatures:
   - interface-vlan
   - scp-server
   - ntp
+  - port-security
 
 badFeatures:
   - telnet
@@ -31,6 +32,7 @@ logServers:
   - 192.168.255.10
   - 192.168.254.10
 
+portSecMax: 1
 enableSecret: $uper$ecretCompany$tuff666
 vtySessionLimit: 2
 vtyTimeout: 10

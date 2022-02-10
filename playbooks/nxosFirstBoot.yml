@@ -164,11 +164,41 @@
           lines:
             - "ip igmp snooping vlan {{ item.vlanID }}"
       loop: "{{ VLANS }}"
-      
-#Access Ports
-  #unknown unicast flood blocking (UUFB)
-  #STP loopguard, rootguard, BPDUguard
-  #storm-control broadcast/unicast
+
+    - name: Setup Access Ports
+      nxos_l2_interfaces:
+        config:
+          - name: "{{ item.portNumber }}"
+          - mode: access
+          access:
+            - vlan: "{{ item.accessVLAN }}"
+      loop: "{{ AccessPorts }}"
+
+    - name: Harden Access Ports
+      nxos_config:
+        parents: "interface {{ item.portNumber }}"
+        lines:
+          - switchport block unicast
+          - storm-control action shutdown
+          - "storm-control broadcast level {{ stormControlBroadcast }}"
+          - "storm-control multicast level {{ stormControlMulticast }}"
+          - "storm-control unicast level {{ stormControlUnicast }}"
+          - switchport port-security mac-address sticky
+          - switchport port-security violation shutdown
+          - "switchport port-security maximum {{ portSecMax }}"
+          - switchport port-security
+          - spanning-tree port type edge
+          - spanning-tree bpduguard enable
+          - spanning-tree guard root
+          - spanning-tree guard loop
+      loop: "{{ AccessPorts }}"
+
+    - name: Auto-recover Security Shutdowns - Port-Security and Storm-Control
+      nxos_config:
+        lines:
+          - errdisable recovery cause storm-control
+          - errdisable recovery cause psecure-violation
+          - errdisable recovery interval 60
 
 #Trunks
 
