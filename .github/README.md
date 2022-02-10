@@ -31,6 +31,7 @@ These playbooks were made for testing certain features or Ansible modules and ar
 Playbook              | Features | Useful
 :-------------         | ------------- | -------------
 [IOSfacts.yml](https://github.com/NetworkNick-io/LearningAnsible/blob/main/testbed/IOSfacts.yml) | Prints the output for several subsets of cisco.ios.ios_facts | 🚫
+[aclTest.yml](https://github.com/NetworkNick-US/AnsiblePlaybooks/blob/main/testbed/aclTest.yml) | Testing of the NXOS ACL module. | 🚫
 
 ## Environment
 ![Lab Environment](https://i.imgur.com/sAibkpG.png)
