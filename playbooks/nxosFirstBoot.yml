@@ -213,7 +213,7 @@
 
     - name: Shutdown Unused Ports
       nxos_config:
-        parents: "interface {{ item }}"
+        parents: "interface ethernet {{ item }}"
         lines:
           - shutdown
       loop: "{{ shutdownPorts }}"
