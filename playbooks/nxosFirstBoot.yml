@@ -131,9 +131,14 @@
                     any: yes
                   log: yes
 
-#VTY session limiting
-
-#VTY/console timeout after X minutes of inactivity
+    - name: VTY Line Confiugration - ACL, Session Limit, Timeout, Transport
+      nxos_config:
+        parents: "line vty"
+        lines:
+          - ip access-class VTY_ACL in
+          - "session-limit {{ vtySessionLimit }}"
+          - "exec-timeout {{ vtyTimeout }}"
+          - transport input SSH
 
 - name: Nexus Switch Functionality
   hosts: newNexus
