@@ -13,8 +13,8 @@ VLANS:
     name: nativeTrunk
 
 VoiceVLAN: 444
-nativeVLAN: 2
 unusedPortVLAN: 999
+nativeVLAN: 2
 
 stormControlBroadcast: 20
 stormControlMulticast: 40

@@ -174,7 +174,7 @@
             - vlan: "{{ item.accessVLAN }}"
       loop: "{{ AccessPorts }}"
 
-    - name: Harden Access Ports
+    - name: Harden Access Ports - Storm Control, Port Security, STP
       nxos_config:
         parents: "interface {{ item.portNumber }}"
         lines:
@@ -191,6 +191,7 @@
           - spanning-tree bpduguard enable
           - spanning-tree guard root
           - spanning-tree guard loop
+          - no shutdown
       loop: "{{ AccessPorts }}"
 
     - name: Auto-recover Security Shutdowns - Port-Security and Storm-Control
@@ -200,6 +201,22 @@
           - errdisable recovery cause psecure-violation
           - errdisable recovery interval 60
 
-#Trunks
+#With the way the variable file is configured, you are unable to use the nxos_l2_interfaces module for this play
+    - name: Configure Trunks/Uplink
+      nxos_config:
+        parents: "interface {{ item }}"
+        lines:
+          - switchport mode trunk
+          - switchport trunk encapsulation dot1q
+          - "switchport trunk native vlan {{ nativeVLAN }}"
 
-#unused ports - shutdown/blackhole vlan
+#          This won't work. Needs a nested loop
+#          - "switchport trunk allowed vlan add {{ allowedVLANTrunk }}"
+      loop: "{{ Trunk Ports }}"
+
+    - name: Shutdown Unused Ports
+      nxos_config:
+        parents: "interface {{ item }}"
+        lines:
+          - shutdown
+      loop: "{{ shutdownPorts }}"
