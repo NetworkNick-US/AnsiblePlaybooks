@@ -201,18 +201,15 @@
           - errdisable recovery cause psecure-violation
           - errdisable recovery interval 60
 
-#With the way the variable file is configured, you are unable to use the nxos_l2_interfaces module for this play
-    - name: Configure Trunks/Uplink
-      nxos_config:
-        parents: "interface ethernet {{ item }}"
-        lines:
-          - switchport mode trunk
-          - switchport trunk encapsulation dot1q
-          - "switchport trunk native vlan {{ nativeVLAN }}"
-
-#          This won't work. Needs a nested loop
-#          - "switchport trunk allowed vlan add {{ allowedVLANTrunk }}"
-      loop: "{{ Trunk Ports }}"
+    - name: Setup Access Ports
+      nxos_l2_interfaces:
+        config:
+          name: "ethernet {{ item.portNumber }}"
+          mode: trunk
+          trunk:
+            - native_vlan: "{{ NativeVLAN }}"
+            - allowed_vlans: "{{ item.allowedVLANList }}"
+      loop: "{{ TrunkPorts }}"
 
     - name: Shutdown Unused Ports
       nxos_config:
