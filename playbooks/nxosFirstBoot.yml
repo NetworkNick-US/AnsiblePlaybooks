@@ -124,8 +124,12 @@
               - name: VTY_ACL
                 aces:
                   grant: deny
+                  protocol: ip
                   source:
+                    any: yes
                   destination:
+                    any: yes
+                  log: yes
 
 #VTY session limiting
 
