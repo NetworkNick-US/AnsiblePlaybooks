@@ -145,11 +145,26 @@
   gather_facts: no
   connection: network_cli
 
+  tasks:
+    - name: Create VLANs
+      nxos_vlans:
+        config:
+          - vlan_id: "{{ item.vlanID }}"
+            name: "{{ item.name }}"
+        state: merged
+      loop: "{{ VLANS }}"
 
-#VLANs [ including blackhole and native ]
+    - name: Enable IGMP Snooping
+      nxos_igmp_snooping:
+        snooping: true
+        state: present
 
-#igmp snooping - all VLANs
-
+    - name: Explicitly Enable IGMP Snooping for Every VLAN
+      nxos_config:
+          lines:
+            - "ip igmp snooping vlan {{ item.vlanID }}"
+      loop: "{{ VLANS }}"
+      
 #Access Ports
   #unknown unicast flood blocking (UUFB)
   #STP loopguard, rootguard, BPDUguard
