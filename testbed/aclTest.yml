@@ -1,0 +1,30 @@
+---
+- name: Nexus Device Management Features
+  hosts: newNexus
+  gather_facts: no
+  connection: network_cli
+
+  tasks:
+  - name: Merge new ACLs configuration
+    cisco.nxos.nxos_acls:
+      config:
+      - afi: ipv4
+        acls:
+        - name: ACL1v4
+          aces:
+          - grant: deny
+            destination:
+              address: 192.0.2.64
+              wildcard_bits: 0.0.0.255
+            source:
+              any: true
+              port_protocol:
+                lt: 55
+            protocol: tcp
+            protocol_options:
+              tcp:
+                ack: true
+                fin: true
+            sequence: 50
+      state: merged
+    loop: "{{ vtyAllowedSubnets }}"

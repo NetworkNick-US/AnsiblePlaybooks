@@ -4,9 +4,9 @@
   hosts: newNexus
   gather_facts: no
   connection: network_cli
-  vars_files:
-    - ./vars/nexusSecurity.yml
-    - ./vars/nexusConfig.yml
+#  vars_files:
+#    - ./vars/nexusSecurity.yml
+#    - ./vars/nexusConfig.yml
 
   tasks:
     - name: Set Correct Hostname
@@ -87,11 +87,45 @@
           timestamp: milliseconds
         state: merged
 
-#logging server(s)
+    - name: Syslog Servers
+      cisco.nxos.nxos_logging_global: #Ansible 2.9.6 is throwing an error if not using the full module name
+        config:
+          hosts:
+            - host: "{{ item }}"
+            - port: 514
+            - severity: informational
+            - use_vrf: default
+      loop: "{{ logServers }}"
 
-#logging - lower level to 6 and create logfile w/ manually specified size
+    - name: Setup ACL for VTY Lines (Permits)
+      cisco.nxos.nxos_acls:
+        config:
+          - afi: ipv4
+            acls:
+              - name: VTY_ACL
+                aces:
+                  grant: permit
+                  protocol: tcp
+                  source:
+                    address: "{{ item.networkAddr }}"
+                    wildcard_bits: "{{ item.wildcardBits }}"
+                  destination:
+                    any: yes
+                    port_protocol:
+                      eq: 22
+        state: merged
+      loop: "{{ vtyAllowedSubnets }}"
 
-#VTY ACL
+    - name: Setup ACL for VTY Lines (Log Deny Statement)
+      cisco.nxos.nxos_acls:
+        config:
+          - afi: ipv4
+            acls:
+              - name: VTY_ACL
+                aces:
+                  grant: deny
+                  source:
+                  destination:
 
 #VTY session limiting
 
