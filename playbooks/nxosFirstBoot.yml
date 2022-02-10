@@ -4,9 +4,9 @@
   hosts: newNexus
   gather_facts: no
   connection: network_cli
-#  vars_files:
-#    - ./vars/nexusSecurity.yml
-#    - ./vars/nexusConfig.yml
+  vars_files:
+    - ./vars/nexusSecurity.yml
+    - ./vars/nexusConfig.yml
 
   tasks:
     - name: Set Correct Hostname
