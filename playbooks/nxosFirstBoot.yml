@@ -40,7 +40,7 @@
 
     - name: Setup Login Banner
       nxos_banner:
-        nxos.banner: motd
+        banner: motd
         text: "{{ lookup('file', './vars/companyBanner.cfg', errors='ignore') }}"
         state: present
 
