@@ -45,19 +45,20 @@
         state: present
 
     - name: Setup NTP with authentication keys
-      cisco.nxos.nxos_ntp_global: #Ansible 2.9.6 is throwing an error if not using the full module name
+      cisco.nxos.nxos_ntp_global:
+#Ansible 2.9.6 is throwing an error if not using the full module name
         config:
           authenticate: yes
           authentication_keys:
-            - encryption: 0
             - id: "{{ item.keyNumber }}"
-            - key: "{{ item.MD5key }}"
-          trusted keys:
+              key: "{{ item.MD5key }}"
+              encryption: 0
+          trusted_keys:
             - key_id: "{{ item.keyNumber }}"
           servers:
-            - key_id: "{{ item.keyNumber }}"
             - server: "{{ item.Server }}"
-            - use_vrf: default
+              key_id: "{{ item.keyNumber }}"
+              use_vrf: default
           logging: yes
         state: merged
       loop: "{{ NTP_Servers }}"
@@ -68,7 +69,8 @@
           - clock timezone EST -5 0
 
     - name: Console Logging, Local Logfile, Timestamps, and Origin
-      cisco.nxos.nxos_logging_global: #Ansible 2.9.6 is throwing an error if not using the full module name
+      cisco.nxos.nxos_logging_global:
+#Ansible 2.9.6 is throwing an error if not using the full module name
         config:
           console:
             - severity: critical
@@ -88,7 +90,8 @@
         state: merged
 
     - name: Syslog Servers
-      cisco.nxos.nxos_logging_global: #Ansible 2.9.6 is throwing an error if not using the full module name
+      cisco.nxos.nxos_logging_global:
+#Ansible 2.9.6 is throwing an error if not using the full module name
         config:
           hosts:
             - host: "{{ item }}"
@@ -98,7 +101,8 @@
       loop: "{{ logServers }}"
 
     - name: Setup ACL for VTY Lines (Permits)
-      cisco.nxos.nxos_acls: #Ansible 2.9.6 is throwing an error if not using the full module name
+      cisco.nxos.nxos_acls:
+#Ansible 2.9.6 is throwing an error if not using the full module name
         config:
           - afi: ipv4
             acls:
@@ -117,7 +121,8 @@
       loop: "{{ vtyAllowedSubnets }}"
 
     - name: Setup ACL for VTY Lines (Log Deny Statement)
-      cisco.nxos.nxos_acls: #Ansible 2.9.6 is throwing an error if not using the full module name
+      cisco.nxos.nxos_acls:
+#Ansible 2.9.6 is throwing an error if not using the full module name
         config:
           - afi: ipv4
             acls:
