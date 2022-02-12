@@ -1,4 +1,3 @@
-#designed to be run locally on first boot/configuration of a new Cisco Nexus Switch
 ---
 - name: Nexus Device Management Features
   hosts: newNexus
@@ -45,7 +44,6 @@
 
     - name: Setup NTP with authentication keys
       cisco.nxos.nxos_ntp_global:
-#Ansible 2.9.6 is throwing an error if not using the full module name
         config:
           authenticate: yes
           authentication_keys:
@@ -69,7 +67,6 @@
 
     - name: Console Logging, Local Logfile, Timestamps, and Origin
       cisco.nxos.nxos_logging_global:
-#Ansible 2.9.6 is throwing an error if not using the full module name
         config:
           console:
             severity: critical
@@ -90,7 +87,6 @@
 
     - name: Syslog Servers
       cisco.nxos.nxos_logging_global:
-#Ansible 2.9.6 is throwing an error if not using the full module name
         config:
           hosts:
             - host: "{{ item }}"
@@ -101,7 +97,6 @@
 
     - name: Setup ACL for VTY Lines (Permits)
       cisco.nxos.nxos_acls:
-#Ansible 2.9.6 is throwing an error if not using the full module name
         config:
           - afi: ipv4
             acls:
@@ -121,7 +116,6 @@
 
     - name: Setup ACL for VTY Lines (Log Deny Statement)
       cisco.nxos.nxos_acls:
-#Ansible 2.9.6 is throwing an error if not using the full module name
         config:
           - afi: ipv4
             acls:
