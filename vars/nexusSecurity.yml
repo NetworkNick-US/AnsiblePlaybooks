@@ -9,7 +9,6 @@ goodFeatures:
   - ssh
   - interface-vlan
   - scp-server
-  - ntp
   - port-security
 
 badFeatures:
