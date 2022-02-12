@@ -95,9 +95,9 @@
         config:
           hosts:
             - host: "{{ item }}"
-            - port: 514
-            - severity: informational
-            - use_vrf: default
+              port: 514
+              severity: informational
+              use_vrf: default
       loop: "{{ logServers }}"
 
     - name: Setup ACL for VTY Lines (Permits)
