@@ -66,6 +66,7 @@ AccessPorts:
   - portNumber: 22
     accessVLAN: 999
 
+portSecMax: 1
 nativeVLAN: 2
 TrunkPorts:
   - portNumber: 23
