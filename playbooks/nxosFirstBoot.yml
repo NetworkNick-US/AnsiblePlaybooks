@@ -108,15 +108,15 @@
             acls:
               - name: VTY_ACL
                 aces:
-                  grant: permit
-                  protocol: tcp
-                  source:
-                    address: "{{ item.networkAddr }}"
-                    wildcard_bits: "{{ item.wildcardBits }}"
-                  destination:
-                    any: yes
-                    port_protocol:
-                      eq: 22
+                  - grant: permit
+                    protocol: tcp
+                    source:
+                      address: "{{ item.networkAddr }}"
+                      wildcard_bits: "{{ item.wildcardBits }}"
+                    destination:
+                      any: yes
+                      port_protocol:
+                        eq: 22
         state: merged
       loop: "{{ vtyAllowedSubnets }}"
 
@@ -128,13 +128,13 @@
             acls:
               - name: VTY_ACL
                 aces:
-                  grant: deny
-                  protocol: ip
-                  source:
-                    any: yes
-                  destination:
-                    any: yes
-                  log: yes
+                  - grant: deny
+                    protocol: ip
+                    source:
+                      any: yes
+                    destination:
+                      any: yes
+                    log: yes
 
     - name: VTY Line Confiugration - ACL, Session Limit, Timeout, Transport
       nxos_config:
