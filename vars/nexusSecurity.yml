@@ -6,6 +6,7 @@ goodFeatures:
   - ospf
   - ospfv3
   - hsrp
+  - ssh
   - interface-vlan
   - scp-server
   - ntp
