@@ -213,7 +213,7 @@
           name: "ethernet {{ item.portNumber }}"
           mode: trunk
           trunk:
-            - native_vlan: "{{ NativeVLAN }}"
+            - native_vlan: "{{ nativeVLAN }}"
             - allowed_vlans: "{{ item.allowedVLANList }}"
       loop: "{{ TrunkPorts }}"
 
