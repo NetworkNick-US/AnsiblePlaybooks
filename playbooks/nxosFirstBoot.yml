@@ -224,7 +224,6 @@
           - shutdown
       loop: "{{ shutdownPorts }}"
 
-
     - name: Save Config When Complete
       nxos_config:
         save_when: always
