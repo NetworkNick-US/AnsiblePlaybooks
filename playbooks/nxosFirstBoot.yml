@@ -210,11 +210,11 @@
     - name: Setup Trunk Ports
       nxos_l2_interfaces:
         config:
-          name: "ethernet {{ item.portNumber }}"
-          mode: trunk
-          trunk:
-            - native_vlan: "{{ nativeVLAN }}"
-            - allowed_vlans: "{{ item.allowedVLANList }}"
+          - name: "ethernet {{ item.portNumber }}"
+            mode: trunk
+            trunk:
+              - native_vlan: "{{ nativeVLAN }}"
+                allowed_vlans: "{{ item.allowedVLANList }}"
       loop: "{{ TrunkPorts }}"
 
     - name: Shutdown Unused Ports
