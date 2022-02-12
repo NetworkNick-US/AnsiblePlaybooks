@@ -73,19 +73,19 @@
 #Ansible 2.9.6 is throwing an error if not using the full module name
         config:
           console:
-            - severity: critical
-            - state: enabled
+            severity: critical
+            state: enabled
           monitor:
-            - severity: critical
-            - state: enabled
+            severity: critical
+            state: enabled
           logfile:
-            - name: lcllogs.txt
-            - persistent _threshold: 75
-            - severity: informational
-            - size: 100000000
-            - state: enabled
+            name: lcllogs.txt
+            persistent_threshold: 75
+            severity: informational
+            size: 100000000
+            state: enabled
           origin_id:
-            - hostname: yes
+            hostname: yes
           timestamp: milliseconds
         state: merged
 
