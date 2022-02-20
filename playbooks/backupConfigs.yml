@@ -1,7 +1,7 @@
 ---
 - name: Verify directories exist for config backup
   hosts: localhost
-  connection: local
+  connection: network_cli
   gather_facts: true
 
   tasks:
