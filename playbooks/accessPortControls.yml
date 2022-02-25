@@ -9,10 +9,10 @@
         parents: "interface {{ item.portNumber }}"
         lines:
           - switchport block unicast
-          - storm-control action shutdown
           - "storm-control broadcast level {{ stormControlBroadcast }}"
           - "storm-control multicast level {{ stormControlMulticast }}"
           - "storm-control unicast level {{ stormControlUnicast }}"
+          - storm-control action shutdown
           - spanning-tree port type edge
           - spanning-tree bpduguard enable
           - spanning-tree guard root
