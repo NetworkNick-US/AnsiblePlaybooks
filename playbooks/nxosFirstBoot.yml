@@ -45,7 +45,7 @@
     - name: Setup NTP with authentication keys
       cisco.nxos.nxos_ntp_global:
         config:
-          authenticate: yes
+          authenticate: true
           authentication_keys:
             - id: "{{ item.keyNumber }}"
               key: "{{ item.MD5key }}"
@@ -56,7 +56,7 @@
             - server: "{{ item.Server }}"
               key_id: "{{ item.keyNumber }}"
               use_vrf: default
-          logging: yes
+          logging: true
         state: merged
       loop: "{{ NTP_Servers }}"
 
@@ -81,7 +81,7 @@
             size: 100000000
             state: enabled
           origin_id:
-            hostname: yes
+            hostname: true
           timestamp: milliseconds
         state: merged
 
@@ -108,7 +108,7 @@
                       address: "{{ item.networkAddr }}"
                       wildcard_bits: "{{ item.wildcardBits }}"
                     destination:
-                      any: yes
+                      any: true
                       port_protocol:
                         eq: 22
         state: merged
@@ -124,10 +124,10 @@
                   - grant: deny
                     protocol: ip
                     source:
-                      any: yes
+                      any: true
                     destination:
-                      any: yes
-                    log: yes
+                      any: true
+                    log: true
 
     - name: VTY Line Confiugration - ACL, Session Limit, Timeout, Transport
       nxos_config:
