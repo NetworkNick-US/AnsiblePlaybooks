@@ -20,3 +20,11 @@
           - spanning-tree guard loop
           - no shutdown
       loop: "{{ AccessPorts }}"
+
+      - name: Shutdown unused ports
+        nxos_config:
+          parents: "interface {{ item.port number }}"
+          lines:
+            - shutdown
+      loop: "{{ AccessPorts }} 
+      when: item.shutdown
