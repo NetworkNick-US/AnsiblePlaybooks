@@ -23,7 +23,7 @@
 
       - name: Shutdown unused ports
         nxos_config:
-          parents: "interface {{ item.port number }}"
+          parents: "interface {{ item.portNumber }}"
           lines:
             - shutdown
       loop: "{{ AccessPorts }} 
