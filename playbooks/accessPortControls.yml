@@ -1,6 +1,6 @@
 ---
 - name: Nexus Device Management Features
-  hosts: newNexus
+  hosts: nexus_switches
   gather_facts: no
   connection: network_cli
 
@@ -30,6 +30,11 @@
       loop: "{{ AccessPorts }} 
       when: item.shutdown
       
+ - name: Nexus Device Management Features
+  hosts: ios_switches
+  gather_facts: no
+  connection: network_cli
+ 
     - name: Harden Access Ports - Storm Control, Port Security, STP
       ios_config:
         parents: "interface {{ item.portNumber }}"
