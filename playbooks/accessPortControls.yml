@@ -58,5 +58,5 @@
           parents: "interface {{ item.portNumber }}"
           lines:
             - shutdown
-      loop: "{{ AccessPorts }} 
+      loop: "{{ AccessPorts }}"
       when: item.shutdown
