@@ -10,6 +10,31 @@
         parents: "interface {{ item.portNumber }}"
         lines:
           - switchport block unicast
+          - "storm-control broadcast level {{ stormControlBroadcastRising }}"
+          - "storm-control multicast level {{ stormControlMulticastRising }}"
+          - "storm-control unicast level {{ stormControlUnicastRising }}"
+          - storm-control action shutdown
+          - spanning-tree port type edge
+          - spanning-tree bpduguard enable
+          - spanning-tree guard root
+          - spanning-tree guard loop
+          - "description {{ item.description | default('NOT USED') }}"
+          - no shutdown
+      loop: "{{ AccessPorts }}"
+
+      - name: Shutdown unused ports
+        nxos_config:
+          parents: "interface {{ item.portNumber }}"
+          lines:
+            - shutdown
+      loop: "{{ AccessPorts }} 
+      when: item.shutdown
+      
+    - name: Harden Access Ports - Storm Control, Port Security, STP
+      ios_config:
+        parents: "interface {{ item.portNumber }}"
+        lines:
+          - switchport block unicast
           - "storm-control broadcast level {{ stormControlBroadcastRising }} {{ stormControlBroadcastFalling}}"
           - "storm-control multicast level {{ stormControlMulticastRising }} {{ stormControlMulticastFalling }}"
           - "storm-control unicast level {{ stormControlUnicastRising }} {{ stormControlUnicastFalling }}"
@@ -23,7 +48,7 @@
       loop: "{{ AccessPorts }}"
 
       - name: Shutdown unused ports
-        nxos_config:
+        ios_config:
           parents: "interface {{ item.portNumber }}"
           lines:
             - shutdown
