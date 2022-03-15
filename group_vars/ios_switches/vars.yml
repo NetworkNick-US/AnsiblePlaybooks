@@ -1,0 +1,37 @@
+AccessPorts:
+  - GigabitEthernet 0/0/1
+    description: uplink1
+  - GigabitEthernet 0/0/2
+    description: uplink2
+  - GigabitEthernet 0/0/3
+  - GigabitEthernet 0/0/4
+  - GigabitEthernet 0/0/5
+  - GigabitEthernet 0/0/6
+    shutdown: True
+  - GigabitEthernet 0/0/7
+    shutdown: True
+  - GigabitEthernet 0/0/8
+    shutdown: True
+  - GigabitEthernet 0/0/9
+  - GigabitEthernet 0/0/10
+  - GigabitEthernet 0/0/11
+  - GigabitEthernet 0/0/12
+  - GigabitEthernet 0/0/13
+  - GigabitEthernet 0/0/14
+  - GigabitEthernet 0/0/15
+  - GigabitEthernet 0/0/16
+  - GigabitEthernet 0/0/17
+  - GigabitEthernet 0/0/18
+  - GigabitEthernet 0/0/19
+  - GigabitEthernet 0/0/20
+  - GigabitEthernet 0/0/21
+  - GigabitEthernet 0/0/22
+  - GigabitEthernet 0/0/23
+  - GigabitEthernet 0/0/24
+
+stormControlBroadCastRising: 33
+stormControlBroadCastFalling: 20
+stormControlMulticastRising: 50
+stormControlMulticastFalling: 25
+stormControlUnicastRising: 95
+stormControlUnicastFalling: 80

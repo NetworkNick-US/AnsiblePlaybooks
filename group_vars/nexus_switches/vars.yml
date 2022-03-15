@@ -1,0 +1,34 @@
+AccessPorts:
+  - ethernet 1
+    description: uplink1
+  - ethernet 2
+    description: uplink2
+  - ethernet 3
+  - ethernet 4
+  - ethernet 5
+  - ethernet 6
+    shutdown: True
+  - ethernet 7
+    shutdown: True
+  - ethernet 8
+    shutdown: True
+  - ethernet 9
+  - ethernet 10
+  - ethernet 11
+  - ethernet 12
+  - ethernet 13
+  - ethernet 14
+  - ethernet 15
+  - ethernet 16
+  - ethernet 17
+  - ethernet 18
+  - ethernet 19
+  - ethernet 20
+  - ethernet 21
+  - ethernet 22
+  - ethernet 23
+  - ethernet 24
+
+stormControlBroadCastRising: 33
+stormControlMulticastRising: 50
+stormControlUnicastRising: 95
