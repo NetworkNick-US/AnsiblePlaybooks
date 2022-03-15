@@ -1,0 +1,13 @@
+---
+- name: Execute Commands on Extreme Devices
+  hosts: Extreme_Switches
+  gather_facts: false
+  connection: network_cli
+  network_os: community.network.exos
+ 
+  tasks:
+    - name: Remove legacy local accounts
+      community.network.exos_config:
+        lines:
+          - "delete account {{ item }}"
+      loop: "{{ old_usernames }}"
