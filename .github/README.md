@@ -33,6 +33,7 @@ These playbooks were made for testing certain features or Ansible modules and ar
 |:-------------------------------------------------------------------------------------------------|--------------------------------------------------------------|--------|
 | [IOSfacts.yml](https://github.com/NetworkNick-io/LearningAnsible/blob/main/testbed/IOSfacts.yml) | Prints the output for several subsets of cisco.ios.ios_facts | 🚫     |
 | [aclTest.yml](https://github.com/NetworkNick-US/AnsiblePlaybooks/blob/main/testbed/aclTest.yml)  | Testing of the NXOS ACL module.                              | 🚫     |
+| [removeExtremeAccounts.yml](https://github.com/NetworkNick-US/AnsiblePlaybooks/blob/main/testbed/removeExtremeAccounts.yml) | Removes local accounts from a list on ExtremeOS network devices |  ✔️     |
 
 ## Environment
 ![Lab Environment](https://i.imgur.com/sAibkpG.png)
