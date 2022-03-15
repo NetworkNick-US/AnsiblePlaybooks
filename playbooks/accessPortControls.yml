@@ -27,14 +27,15 @@
           parents: "interface {{ item.portNumber }}"
           lines:
             - shutdown
-      loop: "{{ AccessPorts }} 
+      loop: "{{ AccessPorts }}"
       when: item.shutdown
-      
- - name: Nexus Device Management Features
+
+- name: Nexus Device Management Features
   hosts: ios_switches
   gather_facts: no
   connection: network_cli
- 
+
+  tasks:
     - name: Harden Access Ports - Storm Control, Port Security, STP
       ios_config:
         parents: "interface {{ item.portNumber }}"
