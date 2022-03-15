@@ -10,28 +10,29 @@ A collection of my playbooks as I learn Ansible within my virtual environment. T
 
 ## Playbooks
 
-Playbook              | Features                                                                                                                | Status 
-| :-------------         |-------------------------------------------------------------------------------------------------------------------------|--------|
-| [backupConfigs.yml](https://github.com/NetworkNick-io/LearningAnsible/blob/main/playbooks/backupConfigs.yml)        | Create a log of all devices' running  configurations, software versions, interface statuses, etc.                       | ✔️     |
-| [changeEnable.yml](https://github.com/NetworkNick-io/LearningAnsible/blob/main/playbooks/changeEnable.yml)          | Change the enable password on all network devices                                                                       | ✔️     |
-| [setupAccessPorts.yml](https://github.com/NetworkNick-io/LearningAnsible/blob/main/playbooks/setupAccessPorts.yml)  | Configures generic functionality for a Layer2  access port                                                              | ✔️     |
-| [setupNTP.yml](https://github.com/NetworkNick-io/LearningAnsible/blob/main/playbooks/setupNTP.yml)                  | Configures any number of NTP servers with MD5  authentication                                                           | ✔️     |
-| [createFallbackAdmin.yml](https://github.com/NetworkNick-io/LearningAnsible/blob/main/playbooks/createAdmin.yml)    | Creates or changes the password for a local fallback administrative account and saves the configuration                 | ✔️     |
-| [removeLocalAccount.yml](https://github.com/NetworkNick-io/LearningAnsible/blob/main/playbooks/removeLocalAccount.yml)                                                                                              | Deletes a local account and saves the configuration                                                                     | ✔️     |
-| [controlFeatures.yml](https://github.com/NetworkNick-US/LearningAnsible/blob/main/playbooks/controlFeatures.yml) | Installs the appropriate features on Nexus switches.                                                                    | ✔️     |
-| [confibureBanner.yml](https://github.com/NetworkNick-US/LearningAnsible/blob/main/playbooks/setupBanner.yml) | Setup and configure a login banner on both NXOS and IOS/IOS XE Cisco devices for security and legal liability purposes. | ✔️     |
-| [nxosFirstBoot.yml](https://github.com/NetworkNick-US/AnsiblePlaybooks/blob/main/playbooks/nxosFirstBoot.yml) | Hardening script for use on new Cisco NXOS devices                                                                      | ✔️     |
-| bouncePort.yml                                                                                                      | Shut/No Shut a port to resolve a port-security issue where automatic err-disable failsafes are not used                 | ✖️     |
-| nexusSetup.yml                                                                                                      | Configures required port-controls, security, logging, etc. functionality on a new device.                               | ✖️     |
-| iosxeSetup.yml                                                                                                      | Configures required port-controls, security, logging, etc. functionality on a new device.                               | ✖️     |    
+| Playbook                                                                                                               | Features                                                                                                                | Status |
+|:-----------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|--------|
+| [backupConfigs.yml](https://github.com/NetworkNick-io/LearningAnsible/blob/main/playbooks/backupConfigs.yml)           | Create a log of all devices' running  configurations, software versions, interface statuses, etc.                       | ✔️     |
+| [changeEnable.yml](https://github.com/NetworkNick-io/LearningAnsible/blob/main/playbooks/changeEnable.yml)             | Change the enable password on all network devices                                                                       | ✔️     |
+| [setupAccessPorts.yml](https://github.com/NetworkNick-io/LearningAnsible/blob/main/playbooks/setupAccessPorts.yml)     | Configures generic functionality for a Layer2  access port                                                              | ✔️     |
+| [setupNTP.yml](https://github.com/NetworkNick-io/LearningAnsible/blob/main/playbooks/setupNTP.yml)                     | Configures any number of NTP servers with MD5  authentication                                                           | ✔️     |
+| [createFallbackAdmin.yml](https://github.com/NetworkNick-io/LearningAnsible/blob/main/playbooks/createAdmin.yml)       | Creates or changes the password for a local fallback administrative account and saves the configuration                 | ✔️     |
+| [removeLocalAccount.yml](https://github.com/NetworkNick-io/LearningAnsible/blob/main/playbooks/removeLocalAccount.yml) | Deletes a local account and saves the configuration                                                                     | ✔️     |
+| [controlFeatures.yml](https://github.com/NetworkNick-US/LearningAnsible/blob/main/playbooks/controlFeatures.yml)       | Installs the appropriate features on Nexus switches.                                                                    | ✔️     |
+| [configureBanner.yml](https://github.com/NetworkNick-US/LearningAnsible/blob/main/playbooks/setupBanner.yml)           | Setup and configure a login banner on both NXOS and IOS/IOS XE Cisco devices for security and legal liability purposes. | ✔️     |
+| [nxosFirstBoot.yml](https://github.com/NetworkNick-US/AnsiblePlaybooks/blob/main/playbooks/nxosFirstBoot.yml)          | Hardening script for use on new Cisco NXOS devices                                                                      | ✔️     |
+| [hardenAccessPorts.yml](https://github.com/NetworkNick-US/AnsiblePlaybooks/blob/main/playbooks/accessPortControls.yml) | Basic script to harden layer 2 interfaces for security requirements.                                                    | ✔️     |
+| bouncePort.yml                                                                                                         | Shut/No Shut a port to resolve a port-security issue where automatic err-disable failsafes are not used                 | ✖️     |
+| nexusSetup.yml                                                                                                         | Configures required port-controls, security, logging, etc. functionality on a new device.                               | ✖️     |
+| iosxeSetup.yml                                                                                                         | Configures required port-controls, security, logging, etc. functionality on a new device.                               | ✖️     |    
 
 ## Testbed
 These playbooks were made for testing certain features or Ansible modules and aren't made for functional purposes.
 
-Playbook              | Features | Useful
-:-------------         | ------------- | -------------
-[IOSfacts.yml](https://github.com/NetworkNick-io/LearningAnsible/blob/main/testbed/IOSfacts.yml) | Prints the output for several subsets of cisco.ios.ios_facts | 🚫
-[aclTest.yml](https://github.com/NetworkNick-US/AnsiblePlaybooks/blob/main/testbed/aclTest.yml) | Testing of the NXOS ACL module. | 🚫
+| Playbook                                                                                         | Features                                                     | Useful |
+|:-------------------------------------------------------------------------------------------------|--------------------------------------------------------------|--------|
+| [IOSfacts.yml](https://github.com/NetworkNick-io/LearningAnsible/blob/main/testbed/IOSfacts.yml) | Prints the output for several subsets of cisco.ios.ios_facts | 🚫     |
+| [aclTest.yml](https://github.com/NetworkNick-US/AnsiblePlaybooks/blob/main/testbed/aclTest.yml)  | Testing of the NXOS ACL module.                              | 🚫     |
 
 ## Environment
 ![Lab Environment](https://i.imgur.com/sAibkpG.png)
@@ -59,4 +60,4 @@ Playbook              | Features | Useful
   ```
 </details>
 
-[Ansible Priveledge Escalation Documentation](https://docs.ansible.com/ansible/latest/network/getting_started/network_differences.html#privilege-escalation)
+[Ansible Privilege Escalation Documentation](https://docs.ansible.com/ansible/latest/network/getting_started/network_differences.html#privilege-escalation)
