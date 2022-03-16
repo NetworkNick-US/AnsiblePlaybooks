@@ -1,6 +1,8 @@
 AccessPorts:
   - GigabitEthernet 0/0/1
     description: uplink1
+    #shutdown can be withheld without issue (default is False - active interface)
+    shutdown: False
   - GigabitEthernet 0/0/2
     description: uplink2
   - GigabitEthernet 0/0/3
