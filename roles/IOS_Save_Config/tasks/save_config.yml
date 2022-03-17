@@ -1,0 +1,4 @@
+---
+- name: Save Config
+  ios_config:
+    save_when: always
