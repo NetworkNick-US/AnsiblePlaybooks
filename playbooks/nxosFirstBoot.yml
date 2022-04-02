@@ -218,6 +218,9 @@
           - shutdown
       loop: "{{ shutdownPorts }}"
 
-    - name: Save Config When Complete
-      nxos_config:
-        save_when: always
+- name: Save Configuration Changes
+  hosts: newNexus
+  gather_facts: no
+  connection: network_cli
+  role:
+    - NXOS_Save_Config
