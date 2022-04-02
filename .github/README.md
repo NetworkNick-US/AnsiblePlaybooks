@@ -48,6 +48,7 @@ These playbooks were made for testing certain features or Ansible modules and ar
   - Enable Password: BigLongPassword123!!
   - NTP Shared Key: TestKey123/TestKey1234s
   - AnsibleAdmin Account Password: MD5passwordtest!
+  - Discord Webhook(s) - these are not shared but can easily be generated for any playbooks that use the Discord community module
   ```
 </details>
 
