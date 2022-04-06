@@ -1,0 +1,10 @@
+---
+- name: Trunk Configuration
+  nxos_l2_interfaces:
+      config:
+        - name: "ethernet {{ item.portNumber }}"
+          mode: trunk
+          trunk:
+            - native_vlan: "{{ nativeVLAN }}"
+              allowed_vlans: "{{ item.allowedVLANList }}"
+  loop: "{{ trunk_ports }}"
