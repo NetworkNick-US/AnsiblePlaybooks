@@ -1,0 +1,8 @@
+---
+- name: Access Port Configuration
+  ios_l2_interfaces:
+      config:
+        - name: "{{ item.portNumber }}"
+          access:
+            - vlan: "{{ nativeVLAN }}"
+  loop: "{{ access_ports }}"
