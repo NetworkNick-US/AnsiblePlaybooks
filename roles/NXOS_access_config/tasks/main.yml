@@ -1,5 +1,5 @@
 ---
-- name: Trunk Configuration
+- name: Access Port Configuration
   nxos_l2_interfaces:
       config:
         - name: "ethernet {{ item.portNumber }}"

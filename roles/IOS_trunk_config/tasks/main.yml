@@ -1,0 +1,9 @@
+---
+- name: Trunk Configuration
+  ios_l2_interfaces:
+      config:
+        - name: "{{ item.portNumber }}"
+          mode: trunk
+          access:
+            - vlan: "{{ nativeVLAN }}"
+  loop: "{{ trunk_ports }}"
