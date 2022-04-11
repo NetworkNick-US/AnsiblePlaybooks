@@ -11,7 +11,7 @@
         webhook_token:
         content: "Hello"
         username: "NetNick"
-        avatar_url: "https://cdn2.lamag.com/wp-content/uploads/sites/6/2020/12/dumpster-100soft-mccarty-closeup1-1068x712.jpg"
+        avatar_url: 
       register: print_output
     - debug: var=print_output
 
