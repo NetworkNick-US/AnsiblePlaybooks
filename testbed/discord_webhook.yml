@@ -17,7 +17,7 @@
 
     - name: HOOK ONE
       community.general.discord:
-        webhook_id: "962895864127447040"
+        webhook_id:
         webhook_token:
         avatar_url:
         username: TestNet
