@@ -6,3 +6,5 @@
           access:
             - vlan: "{{ item.VLAN }}"
   loop: "{{ access_ports }}"
+  notify:
+    - access_port_changed

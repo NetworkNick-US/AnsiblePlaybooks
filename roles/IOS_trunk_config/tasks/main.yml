@@ -7,3 +7,5 @@
             - native_vlan: "{{ nativeVLAN }}"
               allowed_vlans: "{{ item.allowedVLANList }}"
   loop: "{{ trunk_ports }}"
+  notify:
+    - access_port_changed

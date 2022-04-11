@@ -1,0 +1,7 @@
+---
+- name: access_port_changed
+  community.general.discord:
+    webhook_id: "{{ webhook_id }}"
+    webhook_toekn: "{{ webhook_token }}"
+    username: "Ansible Notifier"
+    content: "An access port configuration change was made with Ansible"
