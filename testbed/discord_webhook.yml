@@ -10,27 +10,23 @@
         webhook_id:
         webhook_token:
         content: "Hello"
-        username: "Net"
+        username: "NetNick"
         avatar_url: "https://cdn2.lamag.com/wp-content/uploads/sites/6/2020/12/dumpster-100soft-mccarty-closeup1-1068x712.jpg"
       register: print_output
     - debug: var=print_output
 
     - name: HOOK ONE
       community.general.discord:
-        webhook_id:
+        webhook_id: "962895864127447040"
         webhook_token:
-        avatar_url: "https://cdn2.lamag.com/wp-content/uploads/sites/6/2020/12/dumpster-100soft-mccarty-closeup1-1068x712.jpg"
+        avatar_url:
+        username: TestNet
         embeds:
-          - title: "Embedded Title"
-            description: "Embedded Description"
-            footer:
-              text: "Embedded Footer Text"
-            image:
-              url: "https://cdn2.lamag.com/wp-content/uploads/sites/6/2020/12/dumpster-100soft-mccarty-closeup1-1068x712.jpg"
           - title: "Embed TWO"
             description: "This is my first second message"
+            color: 65518
             footer:
-              text: "Author: Ansible"
+              text: "Network Nick"
               icon_url: "https://cdn2.lamag.com/wp-content/uploads/sites/6/2020/12/dumpster-100soft-mccarty-closeup1-1068x712.jpg"
             image:
               url: "https://cdn2.lamag.com/wp-content/uploads/sites/6/2020/12/dumpster-100soft-mccarty-closeup1-1068x712.jpg"
@@ -39,6 +35,9 @@
                 value: "Value of my first field"
               - name: "Field 2"
                 value: "Value of my second field"
+              - name: "Field 3"
+                value: "This is getting redundant"
             timestamp: "{{ ansible_date_time.iso8601 }}"
+
       register: print_output
     - debug: var=print_output
