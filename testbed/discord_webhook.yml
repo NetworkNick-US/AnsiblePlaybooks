@@ -7,8 +7,8 @@
 
     - name: Test Hook2
       community.general.discord:
-        webhook_id: "962895744476528710"
-        webhook_token: "z6B0SOfjq_HYYvdQgk-JPf2vE_3AF7u7URa7x5dEwvA21NbeO5kA1UT9aVonXCc_x3pb"
+        webhook_id:
+        webhook_token:
         content: "Hello"
         username: "Net"
         avatar_url: 
@@ -17,9 +17,9 @@
 
     - name: HOOK ONE
       community.general.discord:
-        webhook_id: "962895864127447040"
-        webhook_token: "lxdsfeC1L17MFjoD2vHf2ZEh9GUCP-MkIKIDOyXTEOndYc08TenA-yqfidENfb8WIBG3"
-        avatar_url: "https://cdn2.lamag.com/wp-content/uploads/sites/6/2020/12/dumpster-100soft-mccarty-closeup1-1068x712.jpg"
+        webhook_id:
+        webhook_token:
+        avatar_url:
         username: TestNet
         embeds:
           - title: "Embed TWO"
@@ -27,9 +27,9 @@
             color: 65518
             footer:
               text: "Network Nick"
-              icon_url: "https://cdn2.lamag.com/wp-content/uploads/sites/6/2020/12/dumpster-100soft-mccarty-closeup1-1068x712.jpg"
+              icon_url:
             image:
-              url: "https://cdn2.lamag.com/wp-content/uploads/sites/6/2020/12/dumpster-100soft-mccarty-closeup1-1068x712.jpg"
+              url:
             fields:
               - name: "Field 1"
                 value: "Value of my first field"
