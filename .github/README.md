@@ -5,7 +5,8 @@ A collection of my playbooks as I learn Ansible within my virtual environment. T
 - [X] Create Operational Playbooks 👍
 - [X] Implement Ansible-Vault for sensitive information 📋
 - [X] Publish basic .zip or .tar file to bring a [collection of useful playbooks](https://github.com/NetworkNick-io/Operations/releases) into isolated environments 🛂
-- [ ] Create "one-touch" hardening playbook for Cisco IOS XE and NXOS network devices 👨‍💻
+- [X] Create "one-touch" hardening playbook for NXOS network devices 👨‍💻
+- [ ] Create "one-touch" hardening playbook for IOS XE network devices 👨‍💻
 - [ ] Simplify compliance and change-management with audit playbooks 🦺
 
 ## Playbooks
