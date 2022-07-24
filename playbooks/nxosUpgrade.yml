@@ -1,3 +1,8 @@
+---
+- name: Nexus Device Upgrade
+  hosts: nexus_3100_access
+  connection: network_cli
+
 - name: Install OS on N3100 Seriesa Switch
   cisco.nxos.nxos_install_os:
     system_image_file: n3100-compact.9.3.8.bin
