@@ -1,0 +1,21 @@
+- name: Install OS on N3100 Seriesa Switch
+  cisco.nxos.nxos_install_os:
+    system_image_file: n3100-compact.9.3.8.bin
+    issu: desired
+
+- name: Wait for device to come back up with new image
+  wait_for:
+    port: 22
+    state: started
+    timeout: 600
+    delay: 30
+    host: '{{ inventory_hostname }}'
+
+- name: Check installed OS for newly installed version
+  nxos_command:
+    commands: [show version | json]
+    provider: '{{ connection }}'
+  register: output
+- assert:
+    that:
+    - output['stdout'][0]['kickstart_ver_str'] == '9.3.8'
