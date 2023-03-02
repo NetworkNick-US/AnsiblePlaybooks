@@ -1,0 +1,58 @@
+---
+- name: Configure NTP on Cisco network devices and save configuration file
+  hosts: cisco_network_devices
+  gather_facts: no
+  vars:
+    ntp_servers:
+      - 192.0.2.1 key 1
+      - 192.0.2.2 key 1
+    ntp_source:
+      - loopback0
+    ntp_keys:
+      - id: 1
+        key_type: md5
+        key_value: "my_secret_key"
+  tasks:
+    - name: Configure NTP keys on IOS XE devices
+      ios_ntp_auth:
+        keys: "{{ ntp_keys }}"
+      when: "'iosxe' in group_names"
+      become: yes
+
+    - name: Configure NTP keys on NXOS devices
+      nxos_ntp_auth:
+        keys: "{{ ntp_keys }}"
+      when: "'nxos' in group_names"
+      become: yes
+
+    - name: Configure NTP on IOS XE devices
+      ios_ntp:
+        ntp_servers: "{{ ntp_servers }}"
+        source_interface: "{{ ntp_source }}"
+        authenticate: yes
+        trusted_key: 1
+      when: "'iosxe' in group_names"
+      become: yes
+
+    - name: Configure NTP on NXOS devices
+      nxos_ntp:
+        ntp_servers: "{{ ntp_servers }}"
+        source_interface: "{{ ntp_source }}"
+        authenticate: yes
+        trusted_key: 1
+      when: "'nxos' in group_names"
+      become: yes
+
+    - name: Save configuration file on IOS XE devices
+      ios_command:
+        commands:
+          - copy running-config startup-config
+      when: "'iosxe' in group_names"
+      become: yes
+
+    - name: Save configuration file on NXOS devices
+      nxos_command:
+        commands:
+          - copy running-config startup-config
+      when: "'nxos' in group_names"
+      become: yes
