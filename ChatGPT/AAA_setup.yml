@@ -1,0 +1,72 @@
+- name: Configure AAA authentication using RADIUS on Cisco devices
+  hosts: cisco_network_devices
+  gather_facts: no
+  vars_files:
+    - vars/vault.yml
+  vars:
+    radius_servers:
+      - { name: "radius1.example.com", secret: "{{ vault_radius_secret }}" }
+      - { name: "radius2.example.com", secret: "{{ vault_radius_secret }}" }
+    domain_controller: "dc1.example.com"
+    domain_username: "administrator"
+    domain_password: "{{ vault_domain_password }}"
+  tasks:
+    - name: Configure RADIUS server settings
+      vars:
+        ansible_network_os: "{{ hostvars[inventory_hostname]['ansible_network_os'] }}"
+      when: "'ios' in ansible_network_os or 'nxos' in ansible_network_os"
+      ios_command:
+        commands:
+          - "radius-server host {{ item.name }} auth-port 1812 acct-port 1813 key {{ item.secret }}"
+        with_items: "{{ radius_servers }}"
+      nxos_command:
+        commands:
+          - "radius-server host {{ item.name }} key {{ item.secret }}"
+        with_items: "{{ radius_servers }}"
+
+    - name: Configure Windows domain controller settings
+      win_domain_controller:
+        name: "{{ domain_controller }}"
+        username: "{{ domain_username }}"
+        password: "{{ domain_password }}"
+        state: present
+
+    - name: Configure AAA authentication using RADIUS
+      vars:
+        ansible_network_os: "{{ hostvars[inventory_hostname]['ansible_network_os'] }}"
+      when: "'ios' in ansible_network_os or 'nxos' in ansible_network_os"
+      ios_command:
+        commands:
+          - "aaa group server radius RADIUS-SERVERS"
+          - "server {{ item.name }}"
+        with_items: "{{ radius_servers }}"
+      nxos_command:
+        commands:
+          - "radius-server host {{ item.name }}"
+        with_items: "{{ radius_servers }}"
+
+    - name: Configure AAA authentication using RADIUS (cont.)
+      vars:
+        ansible_network_os: "{{ hostvars[inventory_hostname]['ansible_network_os'] }}"
+      when: "'ios' in ansible_network_os or 'nxos' in ansible_network_os"
+      ios_command:
+        commands:
+          - "aaa authentication login default group RADIUS-SERVERS local"
+          - "aaa authentication enable default group RADIUS-SERVERS enable"
+          - "aaa authorization exec default group RADIUS-SERVERS if-authenticated"
+      nxos_command:
+        commands:
+          - "aaa authentication login default group RADIUS-SERVERS"
+          - "aaa authentication enable default group RADIUS-SERVERS"
+          - "aaa authorization exec default group RADIUS-SERVERS"
+
+    - name: Save configuration
+      vars:
+        ansible_network_os: "{{ hostvars[inventory_hostname]['ansible_network_os'] }}"
+      when: "'ios' in ansible_network_os or 'nxos' in ansible_network_os"
+      ios_command:
+        commands:
+          - "write memory"
+      nxos_command:
+        commands:
+          - "copy running-config startup-config"
