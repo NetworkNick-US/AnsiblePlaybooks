@@ -1,0 +1,37 @@
+---
+- name: Backup Cisco IOS XE configuration files
+  hosts: cisco_ios_xe_devices
+  gather_facts: no
+  vars:
+    backup_dir: /backup
+  tasks:
+    - name: Create backup directory if it does not exist
+      file:
+        path: "{{ backup_dir }}"
+        state: directory
+      become: yes
+
+    - name: Get the current date and time
+      set_fact:
+        backup_date: "{{ ansible_date_time.date }}_{{ ansible_date_time.hour }}{{ ansible_date_time.minute }}{{ ansible_date_time.second }}"
+
+    - name: Backup Cisco IOS XE configuration files
+      ios_command:
+        commands:
+          - show running-config
+      register: show_output
+
+    - name: Save configuration to a file with date
+      copy:
+        content: "{{ show_output.stdout[0] }}"
+        dest: "{{ backup_dir }}/{{ inventory_hostname }}_{{ backup_date }}.cfg"
+
+    - name: Verify configuration file was created
+      stat:
+        path: "{{ backup_dir }}/{{ inventory_hostname }}_{{ backup_date }}.cfg"
+      register: backup_file
+
+    - name: Fail if backup file was not created
+      fail:
+        msg: "Failed to create backup file"
+      when: not backup_file.stat.exists
