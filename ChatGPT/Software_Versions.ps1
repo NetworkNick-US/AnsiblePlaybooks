@@ -1,3 +1,6 @@
+#Run to see an output of all software on your system.
+#Get-WmiObject -Class Win32_Product | Select-Object Name, Version | Out-Host
+
 # Define a hashtable of software and their required version numbers
 $softwareVersions = @{
     "Microsoft Office" = "16.0.14131.20278"
