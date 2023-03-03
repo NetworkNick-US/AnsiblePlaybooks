@@ -10,6 +10,8 @@ $softwareVersions = Get-Content -Path "software_versions.txt" | ForEach-Object {
 # Retrieve a list of installed software and their version numbers
 $installedSoftware = Get-WmiObject -Class Win32_Product | Select-Object Name, Version
 
+Write-Host "`n`n[INFO] Checking Installed Software`n`n"
+
 # Compare the version numbers of installed software to the required versions
 foreach ($software in $softwareVersions.Keys) {
 
@@ -25,7 +27,7 @@ foreach ($software in $softwareVersions.Keys) {
         Write-Host "$software is installed but needs to be updated (installed version $installedVersion, required version $requiredVersion)" -ForegroundColor Red
     }
     elseif ($installedVersion -ge $requiredVersion) {
-        Write-Host "$software is installed and up to date (version $installedVersion)"
+        Write-Host "$software is installed and up to date (version $installedVersion)" -ForegroundColor Green
     }
     else {
         Wrie-Host "An unknown error occured with $software. Installed Version: $installedVersion. Required Version: $requiredVersion."
